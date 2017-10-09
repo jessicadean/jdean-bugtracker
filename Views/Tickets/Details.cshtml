@@ -1,0 +1,225 @@
+﻿@model jdean_bugtracker.Models.codeFirst.Ticket
+    @using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignToUser.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignToUser.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerUser.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerUser.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketPriority.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketPriority.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketStatus.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketStatus.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Updated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Updated)
+        </dd>
+
+    </dl>
+</div>
+
+    @foreach (var ticketattachment in Model.Attachments.OrderByDescending(c => c.Id))
+    {
+     
+        
+        <p> <a href="@ticketattachment.FileUrl">@ticketattachment.Description</a> Uploader: @ticketattachment.Author.FullName Date: @ticketattachment.Created</p>
+
+
+
+        if (User.IsInRole("Admin") || User.IsInRole("ProjectManager") || User.Identity.GetUserId() == ticketattachment.AuthorId)
+        {
+            using (Html.BeginForm("DeleteAttachment", "Tickets", new { id = ticketattachment.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit">Delete Attachment</button>
+            }
+        }
+    }
+@using (Html.BeginForm("CreateAttachment", "Tickets", FormMethod.Post, new { enctype = "Multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="number" name="TicketId" value="@Model.Id" hidden/>
+    <div class="form-group btn-group">
+        <label class="control-label col-md-4">Upload File</label>
+        <div class="col-md-8">
+            <input name="attachFile" type="file" class="form-control" />
+            <input type="text" name="Description" placeholder="File description" required />
+            <button value="submit">Attach</button>
+        </div>
+    </div>
+}
+<div class="blog-comment">
+    <div class="comment-heading">
+        <h2>Comments </h2>
+    </div>
+    <div class="comments-wrapper">
+        <div class="comment-single">
+            @*<div class="author-image">
+                    <img src="images/profile01.jpg" alt="" class="img-responsive">
+                </div>*@
+            <div class="author-comment">
+
+                @foreach (var comment in Model.Comments.OrderByDescending(c => c.Id))
+                {
+                    
+                    <p>@comment.Body <br />by: @comment.Author.FullName</p>
+
+
+                    if (User.IsInRole("Admin") || User.IsInRole("ProjectManager") || User.Identity.GetUserId() == comment.AuthorId)
+                    {
+                        using (Html.BeginForm("DeleteComment", "Tickets", new { id = comment.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <button type="submit">Delete Comment</button>
+                        }
+
+                        @Html.AntiForgeryToken()
+                        <button onclick="editForm()">Edit Comment</button>
+
+                        <div id="myDIV">
+                            This is my DIV element.
+                            @using (Html.BeginForm("EditComment", "Tickets", new { id = comment.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(model => comment.Id)
+                                @Html.HiddenFor(model => comment.AuthorId)
+                                <input name="TicketId" value="@Model.Id" hidden/>
+                                <input name="AuthorId" value="@comment.AuthorId" hidden/>
+                                <div class="col-sm-12">
+                                    <textarea name="Body" placeholder="Comment">@comment.Body</textarea>
+
+                                </div>
+                                <button type="submit">Send Edit</button>
+                            }
+                        </div>
+                            <script>
+                                function editForm() {
+                                    var showForm = document.getElementById("myDIV");
+                                    if (showForm.style.display === "none") {
+                                        showForm.style.display = "block";
+                                    } else {
+                                        showForm.style.display = "none";
+                                    }
+                                } </script>
+
+
+
+                    }
+                }
+
+            </div>
+        </div><!-- Ends: .comment-single -->
+
+    </div><!-- Ends: .cmments-wrapper -->
+</div><!-- Ends: .blog-comment -->
+@if (Request.IsAuthenticated)
+{
+    <div class="blog-comment-form">
+
+        <div class="comment-form-heading">
+            <h2>Leave A Comment</h2>
+        </div>
+
+        @using (Html.BeginForm("CreateComment", "Tickets", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="number" name="TicketId" value="@Model.Id" hidden />
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    Commenting as: @User.Identity.Name
+
+                </div>
+                @*<div class="col-sm-6">
+                        <input type="email" placeholder="Email" required>
+                    </div>*@
+                <div class="col-sm-12">
+                    <textarea id="editor" name="Body" placeholder="Comment"></textarea>
+
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit">Add Comment</button>
+                </div>
+            </div>
+        }
+    </div>
+}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
