@@ -28,7 +28,7 @@ namespace jdean_bugtracker.Controllers
                 ViewBag.UserTimeZone = db.Users.Find(User.Identity.GetUserId()).TimeZone;
                 var userId = User.Identity.GetUserId();
                 var userProjects = helper.ListUserProjects(userId);
-                return View(userProjects); //PagedList??
+                return View(userProjects);
             }
             else
             {

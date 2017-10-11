@@ -1,10 +1,11 @@
 ﻿@model jdean_bugtracker.Models.codeFirst.Ticket
-    @using Microsoft.AspNet.Identity;
+
+@using Microsoft.AspNet.Identity;
 
 @{
     ViewBag.Title = "Details";
 }
-
+<link href="~/Assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 <h2>Details</h2>
 
 <div>
@@ -94,27 +95,27 @@
     </dl>
 </div>
 
-    @foreach (var ticketattachment in Model.Attachments.OrderByDescending(c => c.Id))
+@foreach (var ticketattachment in Model.Attachments.OrderByDescending(c => c.Id))
+{
+
+
+    <p> <a href="@ticketattachment.FileUrl">@ticketattachment.Description</a> Uploader: @ticketattachment.Author.FullName Date: @ticketattachment.Created</p>
+
+
+
+    if (User.IsInRole("Admin") || User.IsInRole("ProjectManager") || User.Identity.GetUserId() == ticketattachment.AuthorId)
     {
-     
-        
-        <p> <a href="@ticketattachment.FileUrl">@ticketattachment.Description</a> Uploader: @ticketattachment.Author.FullName Date: @ticketattachment.Created</p>
-
-
-
-        if (User.IsInRole("Admin") || User.IsInRole("ProjectManager") || User.Identity.GetUserId() == ticketattachment.AuthorId)
+        using (Html.BeginForm("DeleteAttachment", "Tickets", new { id = ticketattachment.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
         {
-            using (Html.BeginForm("DeleteAttachment", "Tickets", new { id = ticketattachment.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
-            {
-                @Html.AntiForgeryToken()
-                <button type="submit">Delete Attachment</button>
-            }
+            @Html.AntiForgeryToken()
+            <input type="button" id="deleteattach" class="btn btn-warning" value="Delete File" />
         }
     }
+}
 @using (Html.BeginForm("CreateAttachment", "Tickets", FormMethod.Post, new { enctype = "Multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    <input type="number" name="TicketId" value="@Model.Id" hidden/>
+    <input type="number" name="TicketId" value="@Model.Id" hidden />
     <div class="form-group btn-group">
         <label class="control-label col-md-4">Upload File</label>
         <div class="col-md-8">
@@ -137,18 +138,19 @@
 
                 @foreach (var comment in Model.Comments.OrderByDescending(c => c.Id))
                 {
-                    
-                    <p>@comment.Body <br />by: @comment.Author.FullName</p>
 
+                    <p>@comment.Body <br />by: @comment.Author.FullName</p>
+                    <!--Delete Comment -->
 
                     if (User.IsInRole("Admin") || User.IsInRole("ProjectManager") || User.Identity.GetUserId() == comment.AuthorId)
                     {
+
                         using (Html.BeginForm("DeleteComment", "Tickets", new { id = comment.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
                         {
                             @Html.AntiForgeryToken()
-                            <button type="submit">Delete Comment</button>
+                            <input type="button" id="deletecomment" class="btn btn-warning" value="Delete Comment" />
                         }
-
+                        <!--End Delete Comment-->
                         @Html.AntiForgeryToken()
                         <button onclick="editForm()">Edit Comment</button>
 
@@ -159,8 +161,8 @@
                                 @Html.AntiForgeryToken()
                                 @Html.HiddenFor(model => comment.Id)
                                 @Html.HiddenFor(model => comment.AuthorId)
-                                <input name="TicketId" value="@Model.Id" hidden/>
-                                <input name="AuthorId" value="@comment.AuthorId" hidden/>
+                                <input name="TicketId" value="@Model.Id" hidden />
+                                <input name="AuthorId" value="@comment.AuthorId" hidden />
                                 <div class="col-sm-12">
                                     <textarea name="Body" placeholder="Comment">@comment.Body</textarea>
 
@@ -168,15 +170,15 @@
                                 <button type="submit">Send Edit</button>
                             }
                         </div>
-                            <script>
-                                function editForm() {
-                                    var showForm = document.getElementById("myDIV");
-                                    if (showForm.style.display === "none") {
-                                        showForm.style.display = "block";
-                                    } else {
-                                        showForm.style.display = "none";
-                                    }
-                                } </script>
+                        <script>
+                            function editForm() {
+                                var showForm = document.getElementById("myDIV");
+                                if (showForm.style.display === "none") {
+                                    showForm.style.display = "block";
+                                } else {
+                                    showForm.style.display = "none";
+                                }
+                            } </script>
 
 
 
@@ -223,3 +225,185 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<!--Data Table for Ticket Details-->
+<!-- Container fluid  -->
+<!-- ============================================================== -->
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <h4 class="card-title">Data Export</h4>
+                <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+                <div class="table-responsive m-t-40">
+                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>TicketId</th>
+                                <th>Property</th>
+                                <th>Old Value</th>
+                                <th>New Value</th>
+                                <th>Created</th>
+                                <th>Edited By</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>TicketId</th>
+                                <th>Property</th>
+                                <th>Old Value</th>
+                                <th>New Value</th>
+                                <th>Created</th>
+                                <th>Edited By</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var history in Model.Histories)
+                        {
+                            <tr>
+                                
+                                <td>@history.Id</td>
+                                <td>@history.TicketId</td>
+                                <td>@history.Property</td>
+                                <td>@history.OldValue</td>
+                                <td>@history.NewValue</td>
+                                <td>@history.Created</td> 
+                                <td>@history.Author.FullName</td>
+                                
+                          </tr>
+                        } 
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+                        </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+                    @section Scripts {
+                        <!--Data Table-->
+                        <script src="~/Assets/plugins/datatables/jquery.dataTables.min.js"></script>
+                        <script>
+                            $(document).ready(function () {
+                                $('#myTable').DataTable();
+                                $(document).ready(function () {
+                                    var table = $('#example').DataTable({
+                                        "columnDefs": [{
+                                            "visible": false,
+                                            "targets": 2
+                                        }],
+                                        "order": [
+                                            [2, 'asc']
+                                        ],
+                                        "displayLength": 25,
+                                        "drawCallback": function (settings) {
+                                            var api = this.api();
+                                            var rows = api.rows({
+                                                page: 'current'
+                                            }).nodes();
+                                            var last = null;
+                                            api.column(2, {
+                                                page: 'current'
+                                            }).data().each(function (group, i) {
+                                                if (last !== group) {
+                                                    $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                                                    last = group;
+                                                }
+                                            });
+                                        }
+                                    });
+                                    // Order by the grouping
+                                    $('#example tbody').on('click', 'tr.group', function () {
+                                        var currentOrder = table.order()[0];
+                                        if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                                            table.order([2, 'desc']).draw();
+                                        } else {
+                                            table.order([2, 'asc']).draw();
+                                        }
+                                    });
+                                });
+                            });
+                            $('#example23').DataTable({
+                                dom: 'Bfrtip',
+                                buttons: [
+                                    'copy', 'csv', 'excel', 'pdf', 'print'
+                                ]
+                            });
+                        </script>
+                        <!--Sweet Alerts-->
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.all.min.js"></script>
+                        <script src="~/Assets/plugins/sweetalert/sweetalert-dev.js"></script>
+                        <script src="~/Assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+                        <script src="~/Assets/plugins/sweetalert/sweetalert.min.js"></script>
+
+                        <script>
+                            $('#deletecomment').on('click', function (e)
+                            {
+                                e.preventDefault();
+                                var form = $(this).parents('form');
+                                swal({
+                                    title: "Are you sure?",
+                                    text: "Once deleted, you will not be able to recover this comment!",
+                                    icon: "warning",
+                                    buttons: true,
+                                    dangerMode: true,
+                                    showCloseButton: true,
+                                    showCancelButton: true,
+                                    focusConfirm: false,
+                                    confirmButtonText:
+                                    'Yes, delete',
+                                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                                    cancelButtonText:
+                                    'Cancel',
+                                    cancelButtonAriaLabel: 'Thumbs down',
+                                    closeOnConfirm: false
+                                }, function (isConfirm) {
+                                    if (isConfirm) form.submit();
+                                }
+                                )
+
+                                    ;
+                            })
+                        </script>
+                        <script>
+                            $('#deleteattach').on('click', function (e) {
+                                e.preventDefault();
+                                var form = $(this).parents('form');
+                                swal({
+                                    title: "Are you sure?",
+                                    text: "Once deleted, you will not be able to recover this file!",
+                                    icon: "warning",
+                                    buttons: true,
+                                    dangerMode: true,
+                                    showCloseButton: true,
+                                    showCancelButton: true,
+                                    focusConfirm: false,
+                                    confirmButtonText:
+                                    'Yes, delete',
+                                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                                    cancelButtonText:
+                                    'Cancel',
+                                    cancelButtonAriaLabel: 'Thumbs down',
+                                    closeOnConfirm: false
+                                }, function (isConfirm) {
+                                    if (isConfirm) form.submit();
+                                }
+                                )
+
+                                    ;
+                            })
+                        </script>
+
+                    }

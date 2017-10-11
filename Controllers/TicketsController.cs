@@ -126,18 +126,15 @@ namespace jdean_bugtracker.Controllers
             {
                 ticket.TicketStatusId = 1;
                 ticket.OwnerUserId = User.Identity.GetUserId();
-                //ticket.OwnerUserId = user.FullName;
                 db.Tickets.Add(ticket);
                 ticket.Created = DateTime.Now;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.AssignToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignToUserId);
-            //ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
+            
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Title", ticket.ProjectId);
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
-            //ViewBag.TicketStatusId = new SelectList(db.TicketStatus, "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
             return View(ticket);
         }
@@ -146,6 +143,7 @@ namespace jdean_bugtracker.Controllers
         public ActionResult Edit(int? id)
         {
             Ticket ticket = db.Tickets.Find(id);
+            
 
             if (id == null)
             {
@@ -163,7 +161,6 @@ namespace jdean_bugtracker.Controllers
             var user = db.Users.Find(User.Identity.GetUserId());
             ProjectAssignHelper helper = new ProjectAssignHelper();
             UserRoleHelper userhelper = new UserRoleHelper();
-            //Project project = db.Projects.Find(ticket.ProjectId);
             if (ticket == null)
             {
                 return HttpNotFound();
@@ -223,10 +220,40 @@ namespace jdean_bugtracker.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = db.Users.Find(User.Identity.GetUserId());
+                TicketHistoryHelper tickethelper = new TicketHistoryHelper();
                 ticket.Updated = DateTimeOffset.UtcNow;
                 db.Entry(ticket).State = EntityState.Modified;
+
                 
-                
+                TicketHistory tickethistory = new TicketHistory();
+                var oldTicket = db.Tickets.AsNoTracking().First(t => t.Id == ticket.Id);
+                if (oldTicket.AssignToUserId != ticket.AssignToUserId)
+                {
+                    tickethelper.TktAssignUserHistory(ticket, user.Id);
+                }
+                if (oldTicket.Title != ticket.Title)
+                {
+                    tickethelper.TktTitleHistory(ticket, user.Id);
+                }
+                if (oldTicket.Description != ticket.Description)
+                {
+                    tickethelper.TktDescriptionHistory(ticket, user.Id);
+                }
+                if (oldTicket.TicketTypeId != ticket.TicketTypeId)
+                {
+                    tickethelper.TktTypeIdHistory(ticket, user.Id);
+                }
+                if (oldTicket.TicketStatusId != ticket.TicketStatusId)
+                {
+                    tickethelper.TktStatusIdHistory(ticket, user.Id);
+                }
+                if (oldTicket.TicketPriorityId != ticket.TicketPriorityId)
+                {
+                    tickethelper.TktPriorityIdHistory(ticket, user.Id);
+                }
+
+
                 db.SaveChanges();
 
                
@@ -485,8 +512,9 @@ return View("Details");
             }
         }
 
+       
 
-        protected override void Dispose(bool disposing)
+    protected override void Dispose(bool disposing)
         {
             if (disposing)
             {

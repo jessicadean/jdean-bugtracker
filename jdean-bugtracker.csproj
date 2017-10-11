@@ -210,8 +210,10 @@
     <Compile Include="Models\codeFirst\TicketType.cs" />
     <Compile Include="Models\Helpers\AdminUserViewModels.cs" />
     <Compile Include="Models\Helpers\CustomHelpers.cs" />
+    <Compile Include="Models\Helpers\NotificationHelper.cs" />
     <Compile Include="Models\Helpers\ProjectAssignHelper.cs" />
     <Compile Include="Models\Helpers\ProjectUserViewModel.cs" />
+    <Compile Include="Models\Helpers\TicketHistoryHelper.cs" />
     <Compile Include="Models\Helpers\TicketViewModel.cs" />
     <Compile Include="Models\Helpers\UserRoleHelper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -6755,6 +6757,7 @@
     <Content Include="Views\Projects\ProjectAdmin.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\Tickets\TicketsAdmin.cshtml" />
+    <Content Include="Views\Account\Register - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
