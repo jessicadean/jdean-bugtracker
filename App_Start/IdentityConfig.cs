@@ -21,8 +21,7 @@ namespace jdean_bugtracker
     {
         public async Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            var GmailUsername = WebConfigurationManager.AppSettings["username"]; //points to appsettings tag in Web.config
+            var GmailUsername = WebConfigurationManager.AppSettings["username"];
             var GmailPassword = WebConfigurationManager.AppSettings["password"];
             var host = WebConfigurationManager.AppSettings["host"];
             int port = Convert.ToInt32(WebConfigurationManager.AppSettings["port"]);
@@ -37,16 +36,17 @@ namespace jdean_bugtracker
                 Credentials = new NetworkCredential(GmailUsername, GmailPassword)
             })
 
-            using (var email = new MailMessage("BugTracker<jessicadeanblog@gmail.com>", message.Destination)
+            using (var email = new MailMessage("BugTrackerApp<jessicadeanblog@gmail.com>", message.Destination)
             {
-                Subject = message.Subject, //building mailMessage object
+                Subject = message.Subject,
                 IsBodyHtml = true,
-                Body = message.Body
+                Body = message.Body,
             })
+
             {
                 try
                 {
-                    await smtp.SendMailAsync(email); //this line of code sends the email. await makes sure it runs at the end
+                    await smtp.SendMailAsync(email);
                 }
                 catch (Exception e)
                 {
@@ -56,6 +56,57 @@ namespace jdean_bugtracker
             };
         }
 
+        public class PersonalEmail
+        {
+            private SmtpClient GetClient()
+            {
+                var GmailUsername = WebConfigurationManager.AppSettings["username"];
+                var GmailPassword = WebConfigurationManager.AppSettings["password"];
+                var host = WebConfigurationManager.AppSettings["host"];
+                int port = Convert.ToInt32(WebConfigurationManager.AppSettings["port"]);
+
+                return new SmtpClient()
+                {
+                    Host = host,
+                    Port = port,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(GmailUsername, GmailPassword)
+                };
+            }
+
+            public async Task SendAsync(MailMessage message)
+            {
+                using (var smtp = GetClient())
+                {
+                    try
+                    {
+                        await smtp.SendMailAsync(message);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        await Task.FromResult(0);
+                    }
+                };
+            }
+
+            public void Send(MailMessage message)
+            {
+                using (var smtp = GetClient())
+                {
+                    try
+                    {
+                        smtp.Send(message);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                };
+            }
+        }
     }
 
     public class SmsService : IIdentityMessageService

@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using jdean_bugtracker.Models.codeFirst;
 using System.Collections.Generic;
+using jdean_bugtracker.Models.Helpers;
 
 namespace jdean_bugtracker.Models
 {
@@ -68,5 +69,6 @@ namespace jdean_bugtracker.Models
         public DbSet<TicketPriority> TicketPriorities { get; set; }
         public DbSet<TicketStatus> TicketStatus { get; set; }
         public DbSet<TicketType> TicketTypes { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
     }
 }

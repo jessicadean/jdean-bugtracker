@@ -10,23 +10,62 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using static jdean_bugtracker.EmailService;
 
 namespace jdean_bugtracker.Models.Helpers
 {
-    //public class NotificationHelper
-    //{
 
-    //    public async Task<ActionResult> NotifyUser(Ticket ticket, string userId)
-    //    {
+    public class Notification
+    {
+        public int Id { get; set; }
+        public string Subject { get; set; }
+        public string Message { get; set; }
+        public bool IsNew { get; set; }
+        public DateTimeOffset Sent { get; set; }
+        public string RecipientId { get; set; }
 
-    //        var user = db.Tickets.Find(ticket.AssignToUserId).Email;
-          
-            
-    //        var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-    //        await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-    //        return RedirectToAction("ForgotPasswordConfirmation", "Account");
-    //    }
+        public virtual ApplicationUser Recipient { get; set; }
+    }
 
-    //}
-    //return View();
-}    
+    public class NotificationHelper
+    {
+        ApplicationDbContext db = new ApplicationDbContext();
+        Notification Notification = new Notification();
+
+        public void Notify(string userId, string subject, string message, bool sendEmail)
+        {
+            var notification = new Notification
+            {
+                Subject = subject,
+                Message = message,
+                IsNew = true,
+                RecipientId = userId,
+                Sent = DateTimeOffset.UtcNow,
+            };
+
+            db.Notifications.Add(notification);
+            db.SaveChanges();
+
+            if (sendEmail)
+            {
+                try
+                {
+                    var user = db.Users.Find(userId);
+
+                    var from = "jdeanbugtracker<BugTrackerDONOTREPLY@email.com>";
+                    var email = new MailMessage(from, user.Email)
+                    {
+                        Subject = subject,
+                        Body = message,
+                    };
+
+                    var svc = new PersonalEmail();
+                    svc.Send(email);
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+    }
+}

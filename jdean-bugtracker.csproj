@@ -726,6 +726,7 @@
     <Content Include="Assets\images\logo-light-icon.png" />
     <Content Include="Assets\images\logo-light-text.png" />
     <Content Include="Assets\images\logo-text.png" />
+    <Content Include="Assets\images\spaniel.jpg" />
     <Content Include="Assets\images\tooltip\Euclid.png" />
     <Content Include="Assets\images\tooltip\shape1.svg" />
     <Content Include="Assets\images\tooltip\shape2.svg" />
@@ -6758,6 +6759,7 @@
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\Tickets\TicketsAdmin.cshtml" />
     <Content Include="Views\Account\Register - Copy.cshtml" />
+    <Content Include="Views\Tickets\Index - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

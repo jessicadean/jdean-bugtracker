@@ -227,30 +227,43 @@ namespace jdean_bugtracker.Controllers
 
                 
                 TicketHistory tickethistory = new TicketHistory();
+                NotificationHelper notifyHelper = new NotificationHelper();
                 var oldTicket = db.Tickets.AsNoTracking().First(t => t.Id == ticket.Id);
                 if (oldTicket.AssignToUserId != ticket.AssignToUserId)
                 {
                     tickethelper.TktAssignUserHistory(ticket, user.Id);
+                    notifyHelper.Notify(ticket.AssignToUserId, "BugTracker App Notification", "Your ticket needs attention. "
+                            + ticket.Title, true); 
                 }
                 if (oldTicket.Title != ticket.Title)
                 {
                     tickethelper.TktTitleHistory(ticket, user.Id);
+                    notifyHelper.Notify(ticket.AssignToUserId, "BugTracker App Notification", "Your ticket needs attention. "
+                            + ticket.Title, true);
                 }
                 if (oldTicket.Description != ticket.Description)
                 {
                     tickethelper.TktDescriptionHistory(ticket, user.Id);
+                    notifyHelper.Notify(ticket.AssignToUserId, "BugTracker App Notification", "Your ticket needs attention. "
+                            + ticket.Title, true);
                 }
                 if (oldTicket.TicketTypeId != ticket.TicketTypeId)
                 {
                     tickethelper.TktTypeIdHistory(ticket, user.Id);
+                    notifyHelper.Notify(ticket.AssignToUserId, "BugTracker App Notification", "Your ticket needs attention. "
+                            + ticket.Title, true);
                 }
                 if (oldTicket.TicketStatusId != ticket.TicketStatusId)
                 {
                     tickethelper.TktStatusIdHistory(ticket, user.Id);
+                    notifyHelper.Notify(ticket.AssignToUserId, "BugTracker App Notification", "Your ticket needs attention. "
+                            + ticket.Title, true);
                 }
                 if (oldTicket.TicketPriorityId != ticket.TicketPriorityId)
                 {
                     tickethelper.TktPriorityIdHistory(ticket, user.Id);
+                    notifyHelper.Notify(ticket.AssignToUserId, "BugTracker App Notification", "Your ticket needs attention. "
+                            + ticket.Title, true);
                 }
 
 
@@ -322,8 +335,9 @@ namespace jdean_bugtracker.Controllers
             {
             
                 var ext = Path.GetExtension(attachFile.FileName).ToLower();
-                if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".gif" && ext != ".bmp")
-                    ModelState.AddModelError("image", "Invalid Format.");
+                if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".gif" && ext != ".bmp" && ext != ".pdf")
+
+                    ModelState.AddModelError("attachFile", "Invalid Format.");
             }
             if (ModelState.IsValid) //makes sure all the properties are bound
             {

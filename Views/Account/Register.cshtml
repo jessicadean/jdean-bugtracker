@@ -32,28 +32,28 @@
 </head>
 
 
-    <body>
-        <!-- ============================================================== -->
-        <!-- Preloader - style you can find in spinners.css -->
-        <!-- ============================================================== -->
-        <div class="preloader">
-            <svg class="circular" viewBox="25 25 50 50">
-                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-            </svg>
-        </div>
-        <!-- ============================================================== -->
-        <!-- Main wrapper - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <section id="wrapper">
-            <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
-                <div class="login-box card">
-                    <div class="card-body">
-                        <form class="form-horizontal form-material" id="loginform" action="index.html">
-                            <h3 class="box-title m-b-20">Sign Up for an Account</h3>
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary("", new { @class = "text-danger" })
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <section id="wrapper">
+        <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
+            <div class="login-box card">
+                <div class="card-body">
+                    <div class="form-horizontal form-material" id="loginform">
+                        <h3 class="box-title m-b-20">Sign Up for an Account</h3>
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
@@ -90,42 +90,44 @@
                                     <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Sign Up</button>
                                 </div>
                             </div>
-                            <div class="form-group m-b-0">
-                                <div class="col-sm-12 text-center">
-                                    <div>Already have an account? <a href="pages-login.html" class="text-info m-l-5"><b>Sign In</b></a></div>
-                                </div>
+                        }
+                        <div class="form-group m-b-0">
+                            <div class="col-sm-12 text-center">
+                                <div>Already have an account? <a href="pages-login.html" class="text-info m-l-5"><b>Sign In</b></a></div>
                             </div>
-}</form>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- ============================================================== -->
-        <!-- End Wrapper -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- All Jquery -->
-        <!-- ============================================================== -->
-        <script src="~/Assets/plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap tether Core JavaScript -->
-        <script src="~/Assets/plugins/bootstrap/js/popper.min.js"></script>
-        <script src="~/Assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <!-- slimscrollbar scrollbar JavaScript -->
-        <script src="~/Assets/main/js/jquery.slimscroll.js"></script>
-        <script src="~/Assets/main/js/perfect-scrollbar.min.js"></script>
-        <!--Wave Effects -->
-        <script src="~/Assets/main/js/waves.js"></script>
-        <!--Menu sidebar -->
-        <script src="~/Assets/main/js/sidebarmenu.js"></script>
-        <!--stickey kit -->
-        <script src="~/Assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-        <script src="~/Assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-        <!--Custom JavaScript -->
-        <script src="~/Assets/main/js/custom.min.js"></script>
-        <!-- ============================================================== -->
-        <!-- Style switcher -->
-        <!-- ============================================================== -->
-        <script src="~/Assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
-    </body>
+        </div>
+    </section>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="~/Assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="~/Assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="~/Assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="~/Assets/main/js/jquery.slimscroll.js"></script>
+    <script src="~/Assets/main/js/perfect-scrollbar.min.js"></script>
+    <!--Wave Effects -->
+    <script src="~/Assets/main/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="~/Assets/main/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="~/Assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="~/Assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/Assets/main/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="~/Assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+</body>
 
 </html>

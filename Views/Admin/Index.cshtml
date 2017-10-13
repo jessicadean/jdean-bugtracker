@@ -3,42 +3,110 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="row">
+    <div class="col-12">
 
-<table class="table">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Email
-        </th>
-        <th>
-            Roles
-        </th>
-        <th></th>
-    </tr>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">User Index</h4>
+                <h6 class="card-subtitle">Viewing All Registered Users</h6>
+                <div class="table-responsive m-t-40">
+                    <table id="myTable" class="table table-bordered table-striped">
+                        <thead>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Email)
-            </td>
-            <td>
-                @foreach (var role in item.SelectedRoles)
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Roles
+                                </th>
+                                <th>Admin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User.FullName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User.Email)
+                                    </td>
+                                    <td>
+                                        @foreach (var role in item.SelectedRoles)
                 {
-                    <p>@role</p>
-                }
-            </td>
-            
-            <td>
-                @Html.ActionLink("Edit Roles", "EditUserRoles", new { id = item.User.Id })
-                
-            </td>
-        </tr>
-    }
+                                            <p>@role</p>
+                                        }
+                                    </td>
 
-</table>
+                                    <td>
+                                        @Html.ActionLink("Edit Roles", "EditUserRoles", new { id = item.User.Id })
+
+                                    </td>
+                                </tr>
+                            }
+
+                   
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <!-- This is data table -->
+    <script src="~/Assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script>
+                $(document).ready(function () {
+                    $('#myTable').DataTable();
+                    $(document).ready(function () {
+                        var table = $('#example').DataTable({
+                            "columnDefs": [{
+                                "visible": false,
+                                "targets": 2
+                            }],
+                            "order": [
+                                [2, 'asc']
+                            ],
+                            "displayLength": 25,
+                            "drawCallback": function (settings) {
+                                var api = this.api();
+                                var rows = api.rows({
+                                    page: 'current'
+                                }).nodes();
+                                var last = null;
+                                api.column(2, {
+                                    page: 'current'
+                                }).data().each(function (group, i) {
+                                    if (last !== group) {
+                                        $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                                        last = group;
+                                    }
+                                });
+                            }
+                        });
+                        // Order by the grouping
+                        $('#example tbody').on('click', 'tr.group', function () {
+                            var currentOrder = table.order()[0];
+                            if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                                table.order([2, 'desc']).draw();
+                            } else {
+                                table.order([2, 'asc']).draw();
+                            }
+                        });
+                    });
+                });
+                $('#example23').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+    </script>
+}

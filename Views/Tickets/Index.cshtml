@@ -4,132 +4,167 @@
     ViewBag.Title = "Tickets";
 }
 
-<h2>Tickets</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
- <!-- ============================================================== -->
-<!-- Start Page Content -->
+<!-- ============================================================== -->
+<!-- Start Page Content:: Main Tickets View -->
 <!-- ============================================================== -->
 <div class="row">
     <div class="col-12">
-       
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Data Table</h4>
-                <h6 class="card-subtitle">Data table example</h6>
-                <div class="table-responsive m-t-40">
-                    <table id="myTable" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Ticket No.</th>
-                                <th>Assigned To</th>
-                                <th>Submitted By</th>
-                                <th>Project</th>
-                                <th>Priority</th>
-                                <th>Status</th>
-                                <th>Type</th>
-                                <th>@Html.DisplayNameFor(model => model.Title)</th>
-                                <th>@Html.DisplayNameFor(model => model.Description)</th>
-                                <th>@Html.DisplayNameFor(model => model.Created)</th>
-                                <th>@Html.DisplayNameFor(model => model.Updated)</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                           @foreach (var item in Model)
-                           { 
-                               <tr>
-                                <td>@Html.DisplayFor(modelitem => item.Id)</td>
-                                <td>@Html.DisplayFor(modelItem => item.AssignToUser.FirstName)</td>
-                                <td>@Html.DisplayFor(modelItem => item.OwnerUser.FullName)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Project.Title)</td>
-                                <td>@Html.DisplayFor(modelItem => item.TicketPriority.Name)</td>
-                                <td>@Html.DisplayFor(modelItem => item.TicketStatus.Name)</td>
-                                <td>@Html.DisplayFor(modelItem => item.TicketType.Name)</td>
-                                <td>
-                                   @Html.DisplayFor(modelItem => item.Title)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Description)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Created)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Updated)</td>
-                                   <td>
-                                       @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                       @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                       @Html.ActionLink("Archive", "Delete", new { id = item.Id })
-                                   </td>
+                <h4 class="card-title">Support Ticket List</h4>
+                <h6 class="card-subtitle">List of ticket opend by customers</h6>
+                <div class="row m-t-40">
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-3 col-xlg-3">
+                        <div class="card card-inverse card-info">
+                            <div class="box bg-info text-center">
+                                <h1 class="font-light text-white">@Model.Count()</h1>
+                                <h6 class="text-white">Total Tickets</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-3 col-xlg-3">
+                        <div class="card card-success card-inverse">
+                            <div class="box text-center">
+                                <h1 class="font-light text-white">@Model.Count(t => t.TicketStatusId == 2)</h1>
+                                <h6 class="text-white">Assigned</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-3 col-xlg-3">
+                        <div class="card card-inverse card-danger">
+                            <div class="box text-center">
+                                <h1 class="font-light text-white">@Model.Count(t => t.TicketStatusId == 4)</h1>
+                                <h6 class="text-white">Closed</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-3 col-xlg-3">
+                        <div class="card card-inverse card-dark">
+                            <div class="box text-center">
+                                <h1 class="font-light text-white">@Model.Count(t => t.TicketStatusId == 3)</h1>
+                                <h6 class="text-white">In Progress</h6>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <div class="row">
+                    <div class="col-12">
 
-                            </tr>
-                           }
-                           
-                        </tbody>
-                    </table>
+                        <div class="card">
+                            <div class="card-body">
+                                @*<h4 class="card-title">Data Table</h4>
+                                <h6 class="card-subtitle">Data table example</h6>*@
+                                @if (User.IsInRole("Submitter")) 
+                                    { 
+                                <a href="@Url.Action("Create", "Tickets")" class="btn btn-info btn-rounded">Add Ticket</a>
+                                }
+                                <div class="table-responsive m-t-40">
+                                    <table id="myTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Ticket No.</th>
+                                                <th>Assigned To</th>
+                                                <th>Submitted By</th>
+                                                <th>Project</th>
+                                                <th>Priority</th>
+                                                <th>Status</th>
+                                                <th>Type</th>
+                                                <th>@Html.DisplayNameFor(model => model.Title)</th>
+
+                                                <th>@Html.DisplayNameFor(model => model.Created)</th>
+                                                <th>@Html.DisplayNameFor(model => model.Updated)</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>#@Html.DisplayFor(modelItem => item.Id)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.AssignToUser.FirstName)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.OwnerUser.FullName)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Project.Title)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.TicketPriority.Name)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.TicketStatus.Name)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.TicketType.Name)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+
+                                                    <td>@Html.DisplayFor(modelItem => item.Created)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Updated)</td>
+                                                    <td>
+                                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                                    </td>
+
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Row grouping </h4>
-                <h6 class="card-subtitle">Data table example</h6>
-                <div class="table-responsive m-t-40">
-                   
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ============================================================== -->
-<!-- End PAge Content -->
-<!-- ============================================================== -->
-@section Scripts{
- <!-- This is data table -->
-<script src="~/Assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#myTable').DataTable();
-        $(document).ready(function() {
-            var table = $('#example').DataTable({
-                "columnDefs": [{
-                    "visible": false,
-                    "targets": 2
-                }],
-                "order": [
-                    [2, 'asc']
-                ],
-                "displayLength": 25,
-                "drawCallback": function(settings) {
-                    var api = this.api();
-                    var rows = api.rows({
-                        page: 'current'
-                    }).nodes();
-                    var last = null;
-                    api.column(2, {
-                        page: 'current'
-                    }).data().each(function(group, i) {
-                        if (last !== group) {
-                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
-                            last = group;
-                        }
-                    });
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                @section Scripts{
+                    <!-- This is data table -->
+                    <script src="~/Assets/plugins/datatables/jquery.dataTables.min.js"></script>
+                    <script>
+                        $(document).ready(function () {
+                            $('#myTable').DataTable();
+                            $(document).ready(function () {
+                                var table = $('#example').DataTable({
+                                    "columnDefs": [{
+                                        "visible": false,
+                                        "targets": 2
+                                    }],
+                                    "order": [
+                                        [2, 'asc']
+                                    ],
+                                    "displayLength": 25,
+                                    "drawCallback": function (settings) {
+                                        var api = this.api();
+                                        var rows = api.rows({
+                                            page: 'current'
+                                        }).nodes();
+                                        var last = null;
+                                        api.column(2, {
+                                            page: 'current'
+                                        }).data().each(function (group, i) {
+                                            if (last !== group) {
+                                                $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                                                last = group;
+                                            }
+                                        });
+                                    }
+                                });
+                                // Order by the grouping
+                                $('#example tbody').on('click', 'tr.group', function () {
+                                    var currentOrder = table.order()[0];
+                                    if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                                        table.order([2, 'desc']).draw();
+                                    } else {
+                                        table.order([2, 'asc']).draw();
+                                    }
+                                });
+                            });
+                        });
+                        $('#example23').DataTable({
+                            dom: 'Bfrtip',
+                            buttons: [
+                                'copy', 'csv', 'excel', 'pdf', 'print'
+                            ]
+                        });
+                    </script>
                 }
-            });
-            // Order by the grouping
-            $('#example tbody').on('click', 'tr.group', function() {
-                var currentOrder = table.order()[0];
-                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-                    table.order([2, 'desc']).draw();
-                } else {
-                    table.order([2, 'asc']).draw();
-                }
-            });
-        });
-    });
-    $('#example23').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    });
-</script>
-}
