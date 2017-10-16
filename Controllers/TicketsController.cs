@@ -351,12 +351,21 @@ namespace jdean_bugtracker.Controllers
                 ticketattachment.FileUrl = filePath + attachFile.FileName;
                 attachFile.SaveAs(Path.Combine(absPath, attachFile.FileName));
                
-                }
                 db.TicketAttachments.Add(ticketattachment);
+                
+                }
                 db.SaveChanges();
             }
-            return RedirectToAction("Details", "Tickets", new { id = ticketattachment.TicketId });
-            
+            return RedirectToAction("AttachNotify", "Tickets", new { id = ticketattachment.Id });
+           
+        }
+
+        public ActionResult AttachNotify(int? id)
+        {
+            var ticketAttachment = db.TicketAttachments.Find(id);
+            NotificationHelper notificationHelper = new NotificationHelper();
+            notificationHelper.Notify(ticketAttachment.TicketId, ticketAttachment.Ticket.AssignToUser.Id, "Ticket Update Alert", "An attachment has been added to " + ticketAttachment.Ticket.Title, true);
+            return RedirectToAction("Details", "Tickets", new { id = ticketAttachment.TicketId });
         }
 
         // POST: Tickets/DeleteAttachment
@@ -394,21 +403,31 @@ namespace jdean_bugtracker.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                   
+
 
                     ticketComment.AuthorId = user.Id;
                     ticketComment.Created = DateTimeOffset.UtcNow;
                     db.TicketComments.Add(ticketComment);
+
                     db.SaveChanges();
-
-                    Project project = db.Projects.Find(ticketComment.TicketId);
-                    return RedirectToAction("Details", "Tickets", new { id = ticketComment.TicketId });
                 }
+                   // Project project = db.Projects.Find(ticketComment.TicketId);
+                    return RedirectToAction("AttachComment", "Tickets", new { id = ticketComment.Id });
+                
+              
 
-                //ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
-                //ViewBag.BlogPostId = new SelectList(db.Posts, "Id", "Title", comment.BlogPostId);
-                return View(ticketComment);
+
+
+           // return View(ticketComment);
             }
+        }
+
+        public ActionResult AttachComment(int? id)
+        {
+            var ticketComment = db.TicketComments.Find(id);
+            NotificationHelper notificationHelper = new NotificationHelper();
+            notificationHelper.Notify(ticketComment.TicketId, ticketComment.Ticket.AssignToUser.Id, "Ticket Update Alert", "A comment has been added to " + ticketComment.Ticket.Title, true);
+            return RedirectToAction("Details", "Tickets", new { id = ticketComment.TicketId });
         }
 
         // GET: Tickets/EditComment/5

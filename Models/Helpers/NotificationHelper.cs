@@ -32,7 +32,45 @@ namespace jdean_bugtracker.Models.Helpers
         ApplicationDbContext db = new ApplicationDbContext();
         Notification Notification = new Notification();
 
+
+
         public void Notify(string userId, string subject, string message, bool sendEmail)
+        {
+            var notification = new Notification
+            {
+                Subject = subject,
+                Message = message,
+                IsNew = true,
+                RecipientId = userId,
+                Sent = DateTimeOffset.UtcNow,
+            };
+
+            db.Notifications.Add(notification);
+            db.SaveChanges();
+
+            if (sendEmail)
+            {
+                try
+                {
+                    var user = db.Users.Find(userId);
+
+                    var from = "jdeanbugtracker<BugTrackerDONOTREPLY@email.com>";
+                    var email = new MailMessage(from, user.Email)
+                    {
+                        Subject = subject,
+                        Body = message,
+                    };
+
+                    var svc = new PersonalEmail();
+                    svc.Send(email);
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
+        public void Notify(int TicketId, string userId, string subject, string message, bool sendEmail)
         {
             var notification = new Notification
             {

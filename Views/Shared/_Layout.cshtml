@@ -58,21 +58,21 @@
                 <!-- ============================================================== -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo icon -->
-                            <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text --><span>
-                            <!-- dark Logo text -->
-                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo text -->
-                            <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-                        </span>
-                    </a>
+                        @*<!-- Logo icon --><b>
+        <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+        <!-- Dark Logo icon -->
+        <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+        <!-- Light Logo icon -->
+        <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+    </b>
+    <!--End Logo icon --
+    <!-- Logo text --><span>
+        <!-- dark Logo text -->
+        <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+        <!-- Light Logo text -->
+        <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+    </span>>*@
+    </a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -350,9 +350,9 @@
                     <!-- User profile text-->
                     <div class="profile-text">
                         <h5>@User.Identity.Name</h5>
-                        <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="mdi mdi-settings"></i></a>
-                        <a href="app-email.html" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-                        <a href="pages-login.html" class="" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+                        <a href="@Url.Action("Index","Manage")" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="mdi mdi-settings"></i></a>
+                        @*<a href="app-email.html" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>*@
+                        <a href="@Url.Action("Login","Account")" class="" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
 
                         <div class="dropdown-menu animated flipInY">
                             <!-- text-->
@@ -378,15 +378,15 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
-                        <li class="nav-small-cap">PERSONAL</li>
+                        <li class="nav-small-cap">MENU</li>
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
-                            <ul aria-expanded="false" class="collapse">
+                            <a @*class="has-arrow waves-effect waves-dark"*@ href="@Url.Action("Index","Home")" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard @*<span class="label label-rouded label-themecolor pull-right">4</span>*@</span></a>
+                            @*<ul aria-expanded="false" class="collapse">
                                 <li><a href="index.html">Minimal </a></li>
                                 <li><a href="index2.html">Analytical</a></li>
                                 <li><a href="index3.html">Demographical</a></li>
                                 <li><a href="index4.html">Modern</a></li>
-                            </ul>
+                            </ul>*@
                         </li>
                         <li>
                             <a class="has-arrow waves-effect waves-dark" href="@Url.Action("Index","Projects")" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Projects</span></a>
@@ -406,7 +406,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Admin <span class="label label-rouded label-danger pull-right">25</span></span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Admin </span>></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li>@Html.ActionLink("User Manager", "Index", "Admin")</li>
                             </ul>

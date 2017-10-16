@@ -22,24 +22,22 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Created
+                                    No.
                                 </th>
                                 <th>
-                                    Updated
+                                    Created
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Title)
                                 </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Description)
-                                </th>
+                                
                                 <th>
                                     Created By
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Users)
                                 </th>
-                                <th></th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,30 +45,28 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Created)
+                                       # @Html.DisplayFor(modelItem => item.Id)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Updated)
+                                        @Html.DisplayFor(modelItem => item.Created)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Title)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Description)
-                                    </td>
+                                   
                                     <td>
                                         @Html.DisplayFor(modelItem => item.AuthorId)
                                     </td>
                                     <td>
-                                        @foreach (var user in item.Users)
+                                                                                @foreach (var user in item.Users)
                 {
-                                            @user.FullName <br />
+                                                                                    <small> @user.FullName </small><br />
                                         }
                                     </td>
                                     <td>
                                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                                        @Html.ActionLink("Archive", "Delete", new { id = item.Id }) |
                                         @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
                 {
                                             <div>  @Html.ActionLink("Assign to Project", "ProjectUser", new { id = item.Id })</div>

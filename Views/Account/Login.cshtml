@@ -47,7 +47,7 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <section id="wrapper">
-        <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg); position:relative; background-attachment:fixed">
+        <div class="login-register" style="background-image:url(../assets/images/background/startupRoom.jpg); position:relative; background-attachment:fixed">
             <div class="login-box card">
                 <div class="card-body">
                     
@@ -117,8 +117,7 @@
                         <div class="form-group " hidden>
                             <div class="col-xs-12">
                                
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email", value = "user@demo.com" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                <input name="Email" value="user@demo.com" hidden />
                             </div>
                         </div>
 
@@ -127,8 +126,7 @@
                                 <div class="col-xs-12">
 
                                     <div class="col-xs-12" >
-                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", value="Demopass1!" })
-                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                        <input name="password" value="Demopass1!" hidden>
                                     </div>
                                 </div>
                             </div>
@@ -148,15 +146,13 @@
                         <div class="form-group " hidden>
                             <div class="col-xs-12">
 
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email", value = "developer@demo.com" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                <input name="Email" value="developer@demo.com" hidden />
                             </div>
                         </div>
                         <div class="form-group" hidden>
                             <div class="col-xs-12">
                                 <div class="col-xs-12">
-                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", value = "Demopass1!" })
-                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    <input name="password" value="Demopass1!" hidden>
                                 </div>
                             </div>
                         </div>
@@ -175,15 +171,13 @@
                         <div class="form-group " hidden>
                             <div class="col-xs-12">
                                
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email", value = "project@manager.com" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                              <input name="Email" value="project@manager.com" hidden />
                             </div>
                         </div>
                         <div class="form-group" hidden>
                             <div class="col-xs-12">
                                 <div class="col-xs-12">
-                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", value = "Demopass1!" })
-                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    <input name="password" value="Demopass1!" hidden>
                                 </div>
                             </div>
                         </div>
@@ -201,16 +195,20 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group " hidden>
                             <div class="col-xs-12">
+                                
+                                <input name="Email" value="admin@demo.com" hidden />
                               
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email", value = "admin@demo.com" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+                                @*@Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email", value = "admin@demo.com" })
+    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })*@
                             </div>
                         </div>
                         <div class="form-group" hidden>
                             <div class="col-xs-12">
                                 <div class="col-xs-12">
-                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", value = "Demopass1!" })
-                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    @*@Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", value = "Demopass1!" })*@
+                                    <input name="password" value="Demopass1!" hidden>
+                                    @*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
                                 </div>
                             </div>
                         </div>

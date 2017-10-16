@@ -29,24 +29,22 @@
                             <tr>
 
                                 <th>
-                                    Created
+                                    No.
                                 </th>
                                 <th>
-                                    Updated
+                                    Created
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Title)
                                 </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Description)
-                                </th>
+                                
                                 <th>
                                     Created By
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Users)
                                 </th>
-                                <th></th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,25 +52,24 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Created)
-                                    </td>
+    @Html.DisplayFor(modelItem => item.Id)
+</td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Updated)
+                                        @Html.DisplayFor(modelItem => item.Created.LocalDateTime)
                                     </td>
+                                    
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Title)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Description)
-                                    </td>
+                                    
                                     <td>
                                         @Html.DisplayFor(modelItem => item.AuthorId)
                                     </td>
                                     <td>
                                       
-                                        @foreach (var user in item.Users)
-                                        {
-                                            @user.FullName <br />
+                                                                                @foreach (var user in item.Users)
+                                                                                {
+                                                                                    <small> @user.FullName </small><br />
                                         }
                                     </td>
 

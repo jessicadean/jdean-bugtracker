@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Springer Issue Tracker";
 }
-<h2>@ViewBag.Title.</h2>
+
 
 @{
     Layout = null;
@@ -15,8 +15,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Springer Issue Tracker</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Assets/images/icon/faviconSp.ico"/>
+
+    
     <!-- Bootstrap Core CSS -->
     <link href="~/Assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -31,37 +32,44 @@
     <![endif]-->
 </head>
 
-<body class="fix-header card-no-border">
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <section id="wrapper" class="error-page" style="position:relative">
-        <div class="error-box">
-            <div class="error-body text-center">
-                <h1>Bug Tracker</h1>
-                <h3 class="text-uppercase">Welcome</h3>
-                <p class="text-muted m-t-30 m-b-30">YOU SEEM TO BE TRYING TO FIND HIS WAY HOME</p>
-               
-                @*<img src="~/Assets/images/spaniel.jpg" />*@
-                <a href="@Url.Action("Index","Home")" class="btn btn-info btn-rounded waves-effect waves-light m-b-40">Access App</a>
-            </div>
-            <footer class="footer text-center">© @DateTime.Now.Year Jessica Dean</footer>
-        </div>
-    </section>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="~/Assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="~/Assets/plugins/bootstrap/js/popper.min.js"></script>
 
-    <script src="~/Assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!--Wave Effects -->
-    <script src="~/Assets/main/js/waves.js"></script>
-</body>
+    <body style="background-image:url(~/Assets/images/background/startupRoom.jpg)">
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <section id="wrapper" style="position:relative">
+
+            <div class="error-box">
+                <div class="error-body text-center">
+                    <a href="@Url.Action("Index","Home")">
+                        <img src="~/Assets/images/springer.png" />
+                    </a>
+                    
+                        @*<h3 class="text-uppercase">Welcome</h3>*@
+                        <p class="text-muted m-t-30 m-b-30">SPRINGER IS A SOFTWARE &amp; HARDWARE TICKET TRACKING APP</p>
+                        <div>Created using Visual Studio, MVC Design Pattern, C#, HTML5, CSS, JQuery, &amp; Bootstrap.</div>
+
+                  
+                    
+                </div>
+              
+                <footer class="footer text-center">© @DateTime.Now.Year Jessica Dean</footer>
+            </div>
+        </section>
+        <!-- ============================================================== -->
+        <!-- End Wrapper -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="~/Assets/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="~/Assets/plugins/bootstrap/js/popper.min.js"></script>
+
+        <script src="~/Assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <!--Wave Effects -->
+        <script src="~/Assets/main/js/waves.js"></script>
+    </body>
 
 </html>
 

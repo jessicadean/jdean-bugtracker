@@ -9,92 +9,105 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Ticket</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AssignToUser.FirstName)
-        </dt>
+    <div class="col-md-6">
+        <div class="card card-outline-success">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">@Model.Title</h4>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Special title treatment</h3>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssignToUser.FirstName)
-        </dd>
+                <h4>Ticket</h4>
+                <hr />
+                <p class="card-text">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.AssignToUser.FirstName)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerUser.FirstName)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.AssignToUser.FirstName)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.OwnerUser.FirstName)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.OwnerUser.FirstName)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Project.Title)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.OwnerUser.FirstName)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Project.Title)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Project.Title)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketPriority.Name)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Project.Title)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TicketPriority.Name)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TicketPriority.Name)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketStatus.Name)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TicketPriority.Name)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TicketStatus.Name)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TicketStatus.Name)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketType.Name)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TicketStatus.Name)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TicketType.Name)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TicketType.Name)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TicketType.Name)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Title)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Created)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Created)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Updated)
+                        </dt>
 
-    </dl>
+                        <dd>
+                            @Html.DisplayFor(model => model.Updated)
+                        </dd>
+
+                    </dl>
 </div>
-
+                </p>
+                <a href="#" class="btn btn-inverse">Go somewhere</a>
+        </div>
+    </div>
+</div>
 @foreach (var ticketattachment in Model.Attachments.OrderByDescending(c => c.Id))
 {
 
@@ -264,38 +277,38 @@
                         </tfoot>
                         <tbody>
                             @foreach (var history in Model.Histories)
-                        {
-                            <tr>
-                                
-                                <td>@history.Id</td>
-                                <td>@history.TicketId</td>
-                                <td>@history.Property</td>
-                                <td>@history.OldValue</td>
-                                <td>@history.NewValue</td>
-                                <td>@history.Created</td> 
-                                <td>@history.Author.FullName</td>
-                                
-                          </tr>
-                        } 
+                            {
+                                <tr>
+
+                                    <td>@history.Id</td>
+                                    <td>@history.TicketId</td>
+                                    <td>@history.Property</td>
+                                    <td>@history.OldValue</td>
+                                    <td>@history.NewValue</td>
+                                    <td>@history.Created</td>
+                                    <td>@history.Author.FullName</td>
+
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
             </div>
-                        </div>
         </div>
-
-
     </div>
 
 
+</div>
 
 
 
 
-                    @section Scripts {
-                        <!--Data Table-->
-                        <script src="~/Assets/plugins/datatables/jquery.dataTables.min.js"></script>
-                        <script>
+
+
+@section Scripts {
+    <!--Data Table-->
+    <script src="~/Assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script>
                             $(document).ready(function () {
                                 $('#myTable').DataTable();
                                 $(document).ready(function () {
@@ -341,16 +354,15 @@
                                     'copy', 'csv', 'excel', 'pdf', 'print'
                                 ]
                             });
-                        </script>
-                        <!--Sweet Alerts-->
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.all.min.js"></script>
-                        <script src="~/Assets/plugins/sweetalert/sweetalert-dev.js"></script>
-                        <script src="~/Assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
-                        <script src="~/Assets/plugins/sweetalert/sweetalert.min.js"></script>
+    </script>
+    <!--Sweet Alerts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.all.min.js"></script>
+    <script src="~/Assets/plugins/sweetalert/sweetalert-dev.js"></script>
+    <script src="~/Assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+    <script src="~/Assets/plugins/sweetalert/sweetalert.min.js"></script>
 
-                        <script>
-                            $('#deletecomment').on('click', function (e)
-                            {
+    <script>
+                            $('#deletecomment').on('click', function (e) {
                                 e.preventDefault();
                                 var form = $(this).parents('form');
                                 swal({
@@ -376,8 +388,8 @@
 
                                     ;
                             })
-                        </script>
-                        <script>
+    </script>
+    <script>
                             $('#deleteattach').on('click', function (e) {
                                 e.preventDefault();
                                 var form = $(this).parents('form');
@@ -404,6 +416,6 @@
 
                                     ;
                             })
-                        </script>
+    </script>
 
-                    }
+}

@@ -694,6 +694,7 @@
     <Content Include="Assets\images\background\megamenubg.jpg" />
     <Content Include="Assets\images\background\profile-bg.jpg" />
     <Content Include="Assets\images\background\socialbg.jpg" />
+    <Content Include="Assets\images\background\startupRoom.jpg" />
     <Content Include="Assets\images\background\user-bg.jpg" />
     <Content Include="Assets\images\background\user-info.jpg" />
     <Content Include="Assets\images\background\weatherbg.jpg" />
@@ -720,6 +721,7 @@
     <Content Include="Assets\images\gallery\chair3.jpg" />
     <Content Include="Assets\images\gallery\chair4.jpg" />
     <Content Include="Assets\images\icon\danger.svg" />
+    <Content Include="Assets\images\icon\faviconSp.ico" />
     <Content Include="Assets\images\icon\success.svg" />
     <Content Include="Assets\images\icon\warning.svg" />
     <Content Include="Assets\images\logo-icon.png" />
@@ -727,6 +729,8 @@
     <Content Include="Assets\images\logo-light-text.png" />
     <Content Include="Assets\images\logo-text.png" />
     <Content Include="Assets\images\spaniel.jpg" />
+    <Content Include="Assets\images\springer.png" />
+    <Content Include="Assets\images\springersolo.png" />
     <Content Include="Assets\images\tooltip\Euclid.png" />
     <Content Include="Assets\images\tooltip\shape1.svg" />
     <Content Include="Assets\images\tooltip\shape2.svg" />
