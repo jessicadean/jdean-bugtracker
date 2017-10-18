@@ -17,10 +17,8 @@ using System.IO;
 namespace jdean_bugtracker.Controllers
 {
     [Authorize]
-    public class TicketsController : Controller
-    {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        
+    public class TicketsController : Universal
+    {        
         // GET: Tickets
         public ActionResult Index()
         {
@@ -127,7 +125,7 @@ namespace jdean_bugtracker.Controllers
                 ticket.TicketStatusId = 1;
                 ticket.OwnerUserId = User.Identity.GetUserId();
                 db.Tickets.Add(ticket);
-                ticket.Created = DateTime.Now;
+                ticket.Created = DateTimeOffset.UtcNow;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -204,7 +202,7 @@ namespace jdean_bugtracker.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Projects");
+                return RedirectToAction("Index", "Home");
             }
             return RedirectToAction("Index", "Tickets", null);
         }
@@ -225,7 +223,7 @@ namespace jdean_bugtracker.Controllers
                 ticket.Updated = DateTimeOffset.UtcNow;
                 db.Entry(ticket).State = EntityState.Modified;
 
-                
+
                 TicketHistory tickethistory = new TicketHistory();
                 NotificationHelper notifyHelper = new NotificationHelper();
                 var oldTicket = db.Tickets.AsNoTracking().First(t => t.Id == ticket.Id);
@@ -233,7 +231,7 @@ namespace jdean_bugtracker.Controllers
                 {
                     tickethelper.TktAssignUserHistory(ticket, user.Id);
                     notifyHelper.Notify(ticket.AssignToUserId, "BugTracker App Notification", "Your ticket needs attention. "
-                            + ticket.Title, true); 
+                            + ticket.Title, true);
                 }
                 if (oldTicket.Title != ticket.Title)
                 {
@@ -266,21 +264,18 @@ namespace jdean_bugtracker.Controllers
                             + ticket.Title, true);
                 }
 
-
                 db.SaveChanges();
 
-               
-                return RedirectToAction("Index");
+                ViewBag.AssignToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignToUserId);
+                ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
+                ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Title", ticket.ProjectId);
+                ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
+                ViewBag.TicketStatusId = new SelectList(db.TicketStatus, "Id", "Name", ticket.TicketStatusId);
+                ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
 
+                return View(ticket);
             }
-            ViewBag.AssignToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignToUserId);
-            ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
-            ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Title", ticket.ProjectId);
-            ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
-            ViewBag.TicketStatusId = new SelectList(db.TicketStatus, "Id", "Name", ticket.TicketStatusId);
-            ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
-            
-            return View(ticket);
+            return RedirectToAction("Index");
         }
 
         // GET: Tickets/Delete/5
@@ -356,7 +351,18 @@ namespace jdean_bugtracker.Controllers
                 }
                 db.SaveChanges();
             }
-            return RedirectToAction("AttachNotify", "Tickets", new { id = ticketattachment.Id });
+
+            var ticket = db.Tickets.Find(ticketattachment.TicketId);
+            if (ticket.AssignToUserId != null)
+            {
+                return RedirectToAction("AttachNotify", "Tickets", new { id = ticketattachment.Id });
+            }
+            else
+            {
+                return RedirectToAction("Details", "Tickets", new { id = ticketattachment.TicketId });
+            }
+            
+            
            
         }
 
@@ -396,33 +402,29 @@ namespace jdean_bugtracker.Controllers
         public ActionResult CreateComment([Bind(Include = "Id,TicketId,Body")]TicketComment ticketComment)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
-            //     [Authorize]
-            //[HttpPost]
-            //[ValidateAntiForgeryToken]
-            //public ActionResult Create([Bind(Include = "Id,BlogPostId,Body")] Comment comment)
+           
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
 
+                ticketComment.AuthorId = user.Id;
+                ticketComment.Created = DateTimeOffset.UtcNow;
+                db.TicketComments.Add(ticketComment);
 
-                    ticketComment.AuthorId = user.Id;
-                    ticketComment.Created = DateTimeOffset.UtcNow;
-                    db.TicketComments.Add(ticketComment);
+                db.SaveChanges();
+            }
 
-                    db.SaveChanges();
-                }
-                   // Project project = db.Projects.Find(ticketComment.TicketId);
-                    return RedirectToAction("AttachComment", "Tickets", new { id = ticketComment.Id });
-                
-              
-
-
-
-           // return View(ticketComment);
+            var ticket = db.Tickets.Find(ticketComment.TicketId);
+            if (ticket.AssignToUserId != null)
+            {
+                return RedirectToAction("CommentNotify", "Tickets", new { id = ticketComment.Id });
+            }
+            else
+            {
+                return RedirectToAction("Details", "Tickets", new { id = ticketComment.TicketId });
             }
         }
 
-        public ActionResult AttachComment(int? id)
+        public ActionResult CommentNotify(int? id)
         {
             var ticketComment = db.TicketComments.Find(id);
             NotificationHelper notificationHelper = new NotificationHelper();

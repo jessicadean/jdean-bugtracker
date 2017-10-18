@@ -8,10 +8,8 @@ using System.Web.Mvc;
 namespace jdean_bugtracker.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class HomeController : Universal
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
         [Authorize]
         public ActionResult Index()
         {

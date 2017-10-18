@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
+
 
 namespace jdean_bugtracker.Models
 {
@@ -76,9 +78,13 @@ namespace jdean_bugtracker.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [Display(Name = "Time Zone")]
-        public string TimeZone { get; set; }
+        //[Required]
+        //[Display(Name = "Time Zone")]
+        //public string TimeZone { get; set; }
+        //public SelectList TimeZones { get; set; }
+
+        [Display(Name = "Profile Photo")]
+        public string ProfilePic { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -88,7 +94,7 @@ namespace jdean_bugtracker.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -107,7 +113,7 @@ namespace jdean_bugtracker.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

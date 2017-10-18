@@ -95,7 +95,7 @@
                                                     <td>@Html.DisplayFor(modelItem => item.TicketType.Name)</td>
                                                     <td>@Html.DisplayFor(modelItem => item.Title)</td>
 
-                                                    <td>@Html.DisplayFor(modelItem => item.Created)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
                                                     <td>@Html.DisplayFor(modelItem => item.Updated)</td>
                                                     <td>
                                                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

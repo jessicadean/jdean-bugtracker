@@ -14,7 +14,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="~/Assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Assets/images/icon/faviconSp.ico">
+    <link href="~/Assets/main/css/icons/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Assets/main/css/icons/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" />
     <title>Springer App</title>
     <!-- Bootstrap Core CSS -->
     <link href="~/Assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -57,21 +59,23 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        @*<!-- Logo icon --><b>
+                    <a class="navbar-brand" href=@Url.Action("Index","Home")>
+                        <!-- Logo icon --><b>
         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
         <!-- Dark Logo icon -->
-        <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+        <img src="~/Assets/images/springersoloSM.png" alt="homepage" class="dark-logo" />
         <!-- Light Logo icon -->
-        <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+        <img src="~/Assets/images/springersoloSM.png" alt="homepage" class="light-logo" />
+                                              
     </b>
     <!--End Logo icon --
     <!-- Logo text --><span>
         <!-- dark Logo text -->
-        <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+        <img src="~/Assets/images/spLogoSM.png" alt="homepage" class="dark-logo" />
         <!-- Light Logo text -->
-        <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-    </span>>*@
+        <img src="~/Assets/images/spLogoSM.png" class="light-logo" alt="homepage" />
+    </span>
+                      
     </a>
                 </div>
                 <!-- ============================================================== -->
@@ -280,7 +284,7 @@
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
-                    <ul class="navbar-nav my-lg-0">
+                    @*<ul class="navbar-nav my-lg-0">
 
                         <!-- ============================================================== -->
                         <!-- Search -->
@@ -326,7 +330,7 @@
                                 </ul>
                             </div>
                         </li>
-                    </ul>
+                    </ul>*@
                 </div>
             </nav>
         </header>
@@ -343,16 +347,20 @@
                 <div class="user-profile">
                     <!-- User profile image -->
                     <div class="profile-img">
-                        <img src="../assets/images/users/profile.png" alt="user" />
+                        <img src="@ViewBag.ProfilePic" alt="user" />
                         <!-- this is blinking heartbit-->
                         <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
                     </div>
                     <!-- User profile text-->
                     <div class="profile-text">
                         <h5>@User.Identity.Name</h5>
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                        @Html.AntiForgeryToken()
+                        }
                         <a href="@Url.Action("Index","Manage")" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="mdi mdi-settings"></i></a>
                         @*<a href="app-email.html" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>*@
-                        <a href="@Url.Action("Login","Account")" class="" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+                        <a href="javascript:document.getElementById('logoutForm').submit()" class="" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
 
                         <div class="dropdown-menu animated flipInY">
                             <!-- text-->
@@ -513,7 +521,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2017 Admin Press Admin by themedesigner.in
+                © @DateTime.Now.Year Jessica Dean
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

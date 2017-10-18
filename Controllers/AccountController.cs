@@ -9,11 +9,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using jdean_bugtracker.Models;
+using System.IO;
 
 namespace jdean_bugtracker.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : Universal
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -139,9 +140,9 @@ namespace jdean_bugtracker.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            var timezones = TimeZoneInfo.GetSystemTimeZones();
-            var defaulttimezone = TimeZoneInfo.FindSystemTimeZoneById("US Eastern Standard Time");
-            ViewBag.TimeZone = new SelectList(timezones, "Id", "Id", defaulttimezone);
+            //var timezones = TimeZoneInfo.GetSystemTimeZones();
+            //var defaulttimezone = TimeZoneInfo.FindSystemTimeZoneById("US Eastern Standard Time");
+            //ViewBag.TimeZone = new SelectList(timezones, "Id", "Id");
             return View();
         }
 
@@ -150,11 +151,41 @@ namespace jdean_bugtracker.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase image)
         {
+            var pPic = "/Assets/images/users/profile.png";
+
+            if (image != null && image.ContentLength > 0)
+            {
+                var ext = Path.GetExtension(image.FileName).ToLower();
+                if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".gif" && ext != ".bmp")
+                    ModelState.AddModelError("image", "Invalid Format.");
+            }
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, TimeZone = model.TimeZone };
+                if (image != null)
+                {
+                    //Counter
+                    var num = 0;
+                    //Gets Filename without the extension
+                    var fileName = Path.GetFileNameWithoutExtension(image.FileName);
+                    pPic = Path.Combine("/Assets/ProfilePics/", fileName + Path.GetExtension(image.FileName));
+                    //Checks if pPic matches any of the current attachments, 
+                    //if so it will loop and add a (number) to the end of the filename
+                    while (db.Users.Any(u => u.ProfilePic == pPic))
+                    {
+                        //Sets "filename" back to the default value
+                        fileName = Path.GetFileNameWithoutExtension(image.FileName);
+                        //Add's parentheses after the name with a number ex. filename(4)
+                        fileName = string.Format(fileName + "(" + ++num + ")");
+                        //Makes sure pPic gets updated with the new filename so it could check
+                        pPic = Path.Combine("/Assets/ProfilePics/", fileName + Path.GetExtension(image.FileName));
+                    }
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Assets/ProfilePics/"), fileName + Path.GetExtension(image.FileName)));
+                }
+
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, /*TimeZone = model.TimeZone,*/ ProfilePic = pPic };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -170,8 +201,9 @@ namespace jdean_bugtracker.Controllers
                 }
                 AddErrors(result);
             }
-
+         
             // If we got this far, something failed, redisplay form
+           
             return View(model);
         }
 

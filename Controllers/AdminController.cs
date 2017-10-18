@@ -10,11 +10,8 @@ using System.Web.Mvc;
 namespace jdean_bugtracker.Controllers
 {
     [Authorize(Roles ="Admin")]
-    public class AdminController : Controller
+    public class AdminController : Universal
     {
-        ApplicationDbContext db = new ApplicationDbContext();
-
-        
         public ActionResult Index()
         {
             List<AdminUserViewModels> users = new List<AdminUserViewModels>();

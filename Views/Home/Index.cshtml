@@ -59,21 +59,24 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href=@Url.Action("Index","Home")>
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="~/Assets/images/springersoloSM.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo icon -->
-                            <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                            <img src="~/Assets/images/springersoloSM.png" alt="homepage" class="light-logo" />
+
                         </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text --><span>
+                        <!--End Logo icon --
+                        <!-- Logo text -->
+                        <span>
                             <!-- dark Logo text -->
-                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="~/Assets/images/spLogoSM.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->
-                            <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                            <img src="~/Assets/images/spLogoSM.png" class="light-logo" alt="homepage" />
                         </span>
+
                     </a>
                 </div>
                 <!-- ============================================================== -->
@@ -199,559 +202,567 @@
                         <!-- Messages -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown mega-dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-view-grid"></i></a>
-                            <div class="dropdown-menu scale-up-left">
-                                <ul class="mega-dropdown-menu row">
-                                    <li class="col-lg-3 col-xlg-2 m-b-30">
-                                        <h4 class="m-b-20">CAROUSEL</h4>
-                                        <!-- CAROUSEL -->
-                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                            <div class="carousel-inner" role="listbox">
-                                                <div class="carousel-item active">
-                                                    <div class="container"> <img class="d-block img-fluid" src="../assets/images/big/img1.jpg" alt="First slide"></div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <div class="container"><img class="d-block img-fluid" src="../assets/images/big/img2.jpg" alt="Second slide"></div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <div class="container"><img class="d-block img-fluid" src="../assets/images/big/img3.jpg" alt="Third slide"></div>
-                                                </div>
-                                            </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
-                                        </div>
-                                        <!-- End CAROUSEL -->
-                                    </li>
-                                    <li class="col-lg-3 m-b-30">
-                                        <h4 class="m-b-20">ACCORDION</h4>
-                                        <!-- Accordian -->
-                                        <div id="accordion" class="nav-accordion" role="tablist" aria-multiselectable="true">
-                                            <div class="card">
-                                                <div class="card-header" role="tab" id="headingOne">
-                                                    <h5 class="mb-0">
-                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                            Collapsible Group Item #1
-                                                        </a>
-                                                    </h5>
-                                                </div>
-                                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high. </div>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header" role="tab" id="headingTwo">
-                                                    <h5 class="mb-0">
-                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                            Collapsible Group Item #2
-                                                        </a>
-                                                    </h5>
-                                                </div>
-                                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header" role="tab" id="headingThree">
-                                                    <h5 class="mb-0">
-                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                            Collapsible Group Item #3
-                                                        </a>
-                                                    </h5>
-                                                </div>
-                                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="col-lg-3  m-b-30">
-                                        <h4 class="m-b-20">CONTACT US</h4>
-                                        <!-- Contact -->
-                                        <form>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="exampleInputname1" placeholder="Enter Name">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="Enter email">
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Message"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-info">Submit</button>
-                                        </form>
-                                    </li>
-                                    <li class="col-lg-3 col-xlg-4 m-b-30">
-                                        <h4 class="m-b-20">List style</h4>
-                                        <!-- List style -->
-                                        <ul class="list-style-none">
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> You can give link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Give link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Another Give link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Forth link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Another fifth link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- End Messages -->
-                        <!-- ============================================================== -->
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav my-lg-0">
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item hidden-sm-down search-box">
-                            <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <form class="app-search">
-                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a>
-                            </form>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- Language -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="flag-icon flag-icon-us"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right scale-up"> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-in"></i> India</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-cn"></i> China</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-de"></i> Dutch</a> </div>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- Profile -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
-                            <div class="dropdown-menu dropdown-menu-right scale-up">
-                                <ul class="dropdown-user">
-                                    <li>
-                                        <div class="dw-user-box">
-                                            <div class="u-img"><img src="../assets/images/users/1.jpg" alt="user"></div>
-                                            <div class="u-text">
-                                                <h4>Steave Jobs</h4>
-                                                <p class="text-muted">varun@gmail.com</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
-                                            </div>
+                            @*
+                                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-view-grid"></i></a>
+                                        <div class="dropdown-menu scale-up-left">
+                                            <ul class="mega-dropdown-menu row">
+                                                <li class="col-lg-3 col-xlg-2 m-b-30">
+                                                    <h4 class="m-b-20">CAROUSEL</h4>
+                                                    <!-- CAROUSEL -->
+                                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                                        <div class="carousel-inner" role="listbox">
+                                                            <div class="carousel-item active">
+                                                                <div class="container"> <img class="d-block img-fluid" src="../assets/images/big/img1.jpg" alt="First slide"></div>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <div class="container"><img class="d-block img-fluid" src="../assets/images/big/img2.jpg" alt="Second slide"></div>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <div class="container"><img class="d-block img-fluid" src="../assets/images/big/img3.jpg" alt="Third slide"></div>
+                                                            </div>
+                                                        </div>
+                                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+                                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+                                                    </div>
+                                                    <!-- End CAROUSEL -->
+                                                </li>
+                                                <li class="col-lg-3 m-b-30">
+                                                    <h4 class="m-b-20">ACCORDION</h4>
+                                                    <!-- Accordian -->
+                                                    <div id="accordion" class="nav-accordion" role="tablist" aria-multiselectable="true">
+                                                        <div class="card">
+                                                            <div class="card-header" role="tab" id="headingOne">
+                                                                <h5 class="mb-0">
+                                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                        Collapsible Group Item #1
+                                                                    </a>
+                                                                </h5>
+                                                            </div>
+                                                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                                                <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high. </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card">
+                                                            <div class="card-header" role="tab" id="headingTwo">
+                                                                <h5 class="mb-0">
+                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                        Collapsible Group Item #2
+                                                                    </a>
+                                                                </h5>
+                                                            </div>
+                                                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                                <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card">
+                                                            <div class="card-header" role="tab" id="headingThree">
+                                                                <h5 class="mb-0">
+                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                                        Collapsible Group Item #3
+                                                                    </a>
+                                                                </h5>
+                                                            </div>
+                                                            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                                                                <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="col-lg-3  m-b-30">
+                                                    <h4 class="m-b-20">CONTACT US</h4>
+                                                    <!-- Contact -->
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" id="exampleInputname1" placeholder="Enter Name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control" placeholder="Enter email">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Message"></textarea>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-info">Submit</button>
+                                                    </form>
+                                                </li>
+                                                <li class="col-lg-3 col-xlg-4 m-b-30">
+                                                    <h4 class="m-b-20">List style</h4>
+                                                    <!-- List style -->
+                                                    <ul class="list-style-none">
+                                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> You can give link</a></li>
+                                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Give link</a></li>
+                                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Another Give link</a></li>
+                                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Forth link</a></li>
+                                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Another fifth link</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                                    <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                                    <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="@Url.Action("Login","Account")"><i class="fa fa-power-off"></i> Logout</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- User profile -->
-                <div class="user-profile">
-                    <!-- User profile image -->
-                    <div class="profile-img">
-                        <img src="../assets/images/users/profile.png" alt="user" />
-                        <!-- this is blinking heartbit-->
-                        <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
-                    </div>
-                    <!-- User profile text-->
-                    <div class="profile-text">
-                        <h5>@User.Identity.Name</h5>
-                        <a href="@Url.Action("Index","Manage")" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="mdi mdi-settings"></i></a>
-                        @*<a href="app-email.html" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>*@
-                        <a href="@Url.Action("Login","Account")" class="" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
-
-                        <div class="dropdown-menu animated flipInY">
-                            <!-- text-->
-                            <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
-                            <!-- text-->
-                            <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
-                            <!-- text-->
-                            <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-                            <!-- text-->
-                            <div class="dropdown-divider"></div>
-                            <!-- text-->
-                            <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-                            <!-- text-->
-                            <div class="dropdown-divider"></div>
-                            <!-- text-->
-                            <div><a href="@Url.Action("Login","Account")"><i class="fa fa-power-off"></i></a></div>
-                            <!-- text-->
-                        </div>
-                    </div>
-                </div>
-                <!-- End User profile text-->
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="nav-devider"></li>
-                        <li class="nav-small-cap">MENU</li>
-                        <li>
-                            <a @*class="has-arrow waves-effect waves-dark"*@ href="@Url.Action("Index","Home")" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard @*<span class="label label-rouded label-themecolor pull-right">4</span>*@</span></a>
-                            @*<ul aria-expanded="false" class="collapse">
-                                    <li><a href="index.html">Minimal </a></li>
-                                    <li><a href="index2.html">Analytical</a></li>
-                                    <li><a href="index3.html">Demographical</a></li>
-                                    <li><a href="index4.html">Modern</a></li>
+                                    <!-- ============================================================== -->
+                                    <!-- End Messages -->
+                                    <!-- ============================================================== -->
                                 </ul>*@
-                        </li>
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="@Url.Action("Index","Projects")" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Projects</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li>@Html.ActionLink("My Projects", "Index", "Projects")</li>
-                                <li>@Html.ActionLink("Project Manager", "ProjectAdmin", "Projects")</li>
-
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-email"></i><span class="hide-menu">Tickets</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li>@Html.ActionLink("My Tickets", "Index", "Tickets")</li>
-                                <li>@Html.ActionLink("Tickets Manager", "TicketsAdmin", "Tickets")</li>
-
-                                @*<span class="label label-rouded label-danger pull-right">25</span>*@
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Admin </span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li>@Html.ActionLink("User Manager", "Index", "Admin")</li>
-                            </ul>
-                        </li>
-
-
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                        @*<ul class="navbar-nav my-lg-0">
+                            <!-- ============================================================== -->
+                            <!-- Search -->
+                            <!-- ============================================================== -->
+                            <li class="nav-item hidden-sm-down search-box">
+                                <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                                <form class="app-search">
+                                    <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a>
+                                </form>
+                            </li>
+                            <!-- ============================================================== -->
+                            <!-- Language -->
+                            <!-- ============================================================== -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="flag-icon flag-icon-us"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right scale-up"> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-in"></i> India</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-cn"></i> China</a> <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-de"></i> Dutch</a> </div>
+                            </li>
+                            <!-- ============================================================== -->
+                            <!-- Profile -->
+                            <!-- ============================================================== -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
+                                <div class="dropdown-menu dropdown-menu-right scale-up">
+                                    <ul class="dropdown-user">
+                                        <li>
+                                            <div class="dw-user-box">
+                                                <div class="u-img"><img src="../assets/images/users/1.jpg" alt="user"></div>
+                                                <div class="u-text">
+                                                    <h4>Steave Jobs</h4>
+                                                    <p class="text-muted">varun@gmail.com</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                        @*<li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
+                                        <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="@Url.Action("Login","Account")"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>*@
             </div>
-            <!-- End Sidebar scroll-->
-        </aside>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Dashboard</h3>
+        </nav>
+    </header>
+    <!-- ============================================================== -->
+    <!-- End Topbar header -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <aside class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- User profile -->
+            <div class="user-profile">
+                <!-- User profile image -->
+                <div class="profile-img">
+                    <img src="@ViewBag.ProfilePic" alt="user" />
+                    <!-- this is blinking heartbit-->
+                    <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
                 </div>
-                <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
-                </div>
-                <div>
-                    <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+                <!-- User profile text-->
+                <div class="profile-text">
+                    <h5>@User.Identity.Name</h5>
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                    }
+                    <a href="@Url.Action("Index","Manage")" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="mdi mdi-settings"></i></a>
+                    @*<a href="app-email.html" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>*@
+                    <a href="javascript:document.getElementById('logoutForm').submit()" class="" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+
+                    <div class="dropdown-menu animated flipInY">
+                        <!-- text-->
+                        <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                        <!-- text-->
+                        <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
+                        <!-- text-->
+                        <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
+                        <!-- text-->
+                        <div class="dropdown-divider"></div>
+                        <!-- text-->
+                        <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
+                        <!-- text-->
+                        <div class="dropdown-divider"></div>
+                        <!-- text-->
+                        <div><a href="@Url.Action("Login","Account")"><i class="fa fa-power-off"></i></a></div>
+                        <!-- text-->
+                    </div>
                 </div>
             </div>
+            <!-- End User profile text-->
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li class="nav-devider"></li>
+                    <li class="nav-small-cap">MENU</li>
+                    <li>
+                        <a @*class="has-arrow waves-effect waves-dark"*@ href="@Url.Action("Index","Home")" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard @*<span class="label label-rouded label-themecolor pull-right">4</span>*@</span></a>
+                        @*<ul aria-expanded="false" class="collapse">
+                                <li><a href="index.html">Minimal </a></li>
+                                <li><a href="index2.html">Analytical</a></li>
+                                <li><a href="index3.html">Demographical</a></li>
+                                <li><a href="index4.html">Modern</a></li>
+                            </ul>*@
+                    </li>
+                    <li>
+                        <a class="has-arrow waves-effect waves-dark" href="@Url.Action("Index","Projects")" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Projects</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li>@Html.ActionLink("My Projects", "Index", "Projects")</li>
+                            @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager")) { 
+                            <li>@Html.ActionLink("Project Manager", "ProjectAdmin", "Projects")</li>
+                            }
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-email"></i><span class="hide-menu">Tickets</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li>@Html.ActionLink("My Tickets", "Index", "Tickets")</li>
+                            @if (User.IsInRole("Admin")) { 
+                            <li>@Html.ActionLink("Tickets Manager", "TicketsAdmin", "Tickets")</li>
+                            }
+                            @*<span class="label label-rouded label-danger pull-right">25</span>*@
+                        </ul>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    { <li>
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Admin </span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li>@Html.ActionLink("User Manager", "Index", "Admin")</li> 
+                        </ul>
+                    </li>
+                    }
+
+                </ul>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+    </aside>
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Dashboard</h3>
+            </div>
+            <div class="col-md-7 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </div>
+            <div>
+                <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
             <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- Start Page Content -->
             <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
+            <!-- Row -->
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
+                                <h3 class="">2456</h3>
+                                <h6 class="card-subtitle">New Projects</h6>
+                            </div>
+                            <div class="col-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="m-b-0"><i class="mdi mdi-alert-circle text-success"></i></h2>
+                                <h3 class="">@Model.Count()</h3>
+                                <h6 class="card-subtitle">Pending Projects</h6>
+                            </div>
+                            <div class="col-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="m-b-0"><i class="mdi mdi-wallet text-purple"></i></h2>
+                                <h3 class="">10</h3>
+                                <h6 class="card-subtitle">Total Tickets</h6>
+                            </div>
+                            <div class="col-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 56%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="m-b-0"><i class="mdi mdi-buffer text-warning"></i></h2>
+                                <h3 class="">13</h3>
+                                <h6 class="card-subtitle">Total Staff</h6>
+                            </div>
+                            <div class="col-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 26%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row -->
+            <div class="row">
+                <!-- Column -->
+                @*<div class="col-lg-8 col-xlg-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex flex-wrap">
+                                            <div>
+                                                <h4 class="card-title">Yearly Earning</h4>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <ul class="list-inline">
+                                                    <li>
+                                                        <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Sales</h6>
+                                                    </li>
+                                                    <li>
+                                                        <h6 class="text-muted  text-info"><i class="fa fa-circle font-10 m-r-10"></i>Earning ($)</h6>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div id="earning" style="height: 355px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3">
+                        <div class="card card-inverse card-info">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="m-r-20 align-self-center">
+                                        <h1 class="text-white"><i class="ti-light-bulb"></i></h1>
+                                    </div>
+                                    <div>
+                                        <h3 class="card-title">Ticket Analytics</h3>
+                                        <h6 class="card-subtitle"> 2017</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 align-self-center">
+                                        <h2 class="font-light text-white"><sup><small><i class="ti-arrow-up"></i></small></sup>35487</h2>
+                                    </div>
+                                    <div class="col-6 p-t-10 p-b-20 text-right">
+                                        <div class="spark-count" style="height:65px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-inverse card-success">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="m-r-20 align-self-center">
+                                        <h1 class="text-white"><i class="ti-pie-chart"></i></h1>
+                                    </div>
+                                    <div>
+                                        <h3 class="card-title">Ticket Status</h3>
+                                        <h6 class="card-subtitle"> 2017</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6 align-self-center">
+                                                        <h2 class="font-light text-white">50 GB</h2>
+                                                    </div>
+                                                    <div class="col-6 p-t-10 p-b-20 text-right align-self-center">
+                                                        <div class="spark-count2" style="height:65px"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Column -->
+                                </div>*@
                 <!-- Row -->
-                <div class="card-group">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
-                                    <h3 class="">2456</h3>
-                                    <h6 class="card-subtitle">New Projects</h6>
-                                </div>
-                                <div class="col-12">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2 class="m-b-0"><i class="mdi mdi-alert-circle text-success"></i></h2>
-                                    <h3 class="">@Model.Count()</h3>
-                                    <h6 class="card-subtitle">Pending Projects</h6>
-                                </div>
-                                <div class="col-12">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 40%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2 class="m-b-0"><i class="mdi mdi-wallet text-purple"></i></h2>
-                                    <h3 class="">10</h3>
-                                    <h6 class="card-subtitle">Total Tickets</h6>
-                                </div>
-                                <div class="col-12">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 56%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2 class="m-b-0"><i class="mdi mdi-buffer text-warning"></i></h2>
-                                    <h3 class="">13</h3>
-                                    <h6 class="card-subtitle">Total Staff</h6>
-                                </div>
-                                <div class="col-12">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 26%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- Row -->
                 <div class="row">
-                    <!-- Column -->
-                    @*<div class="col-lg-8 col-xlg-9">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="d-flex flex-wrap">
-                                                <div>
-                                                    <h4 class="card-title">Yearly Earning</h4>
-                                                </div>
-                                                <div class="ml-auto">
-                                                    <ul class="list-inline">
-                                                        <li>
-                                                            <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Sales</h6>
-                                                        </li>
-                                                        <li>
-                                                            <h6 class="text-muted  text-info"><i class="fa fa-circle font-10 m-r-10"></i>Earning ($)</h6>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div id="earning" style="height: 355px;"></div>
-                                        </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                @*<select class="custom-select pull-right">
+                                        <option selected="">July</option>
+                                        <option value="1">Aug</option>
+                                        <option value="2">Sept</option>
+                                        <option value="3">Oct</option>
+                                    </select>
+                                    <h4 class="card-title">Projects</h4>
+                                    <h6 class="card-subtitle">Viewing Projects</h6>*@
+                            </div>
+                            <div class="bg-light p-20">
+                                <div class="d-flex">
+                                    <div class="align-self-center">
+                                        <h3 class="m-b-0">Total Projects</h3><small>Showing latest projects</small>
+                                    </div>
+                                    <div class="ml-auto align-self-center">
+                                        <h2 class="text-success">@Model.Count()</h2>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Column -->
-                        <div class="col-lg-4 col-xlg-3">
-                            <div class="card card-inverse card-info">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="m-r-20 align-self-center">
-                                            <h1 class="text-white"><i class="ti-light-bulb"></i></h1>
-                                        </div>
-                                        <div>
-                                            <h3 class="card-title">Ticket Analytics</h3>
-                                            <h6 class="card-subtitle"> 2017</h6>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 align-self-center">
-                                            <h2 class="font-light text-white"><sup><small><i class="ti-arrow-up"></i></small></sup>35487</h2>
-                                        </div>
-                                        <div class="col-6 p-t-10 p-b-20 text-right">
-                                            <div class="spark-count" style="height:65px"></div>
-                                        </div>
-                                    </div>
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover earning-box">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="1">No.</th>
+                                                <th colspan="2">Name</th>
+                                                <th colspan="2">Begin Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (User.IsInRole("Admin"))
+                                            {
+                                                foreach (var item in Model.Take(3))
+                                                {
+                                                    <tr>
+                                                        <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
+                                                        <td>
+                                                            <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
+                                                        </td>
+                                                        <td></td>
+                                                        <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
+                                                    </tr>
+                                                }
+                                            }
+                                            else if (User.IsInRole("ProjectManager"))
+                                            {
+                                                foreach (var item in Model.Take(3))
+                                                {
+                                                    <tr>
+                                                        <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
+                                                        <td>
+                                                            <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
+                                                        </td>
+                                                        <td></td>
+                                                        <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
+                                                    </tr>
+                                                }
+                                            }
+
+                                            else if (User.IsInRole("Developer"))
+                                            {
+                                                foreach (var item in Model.Take(3))
+                                                {
+                                                    <tr>
+                                                        <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
+                                                        <td>
+                                                            <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
+                                                        </td>
+                                                        <td></td>
+                                                        <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
+                                                    </tr>
+                                                }
+                                            }
+
+                                            else if (User.IsInRole("Submitter"))
+                                            {
+                                                foreach (var item in Model.Take(3))
+                                                {
+                                                    <tr>
+                                                        <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
+                                                        <td>
+                                                            <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
+                                                        </td>
+                                                        <td></td>
+                                                        <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
+                                                    </tr>
+                                                }
+
+                                            }
+                                            @*</tbody>
+    </table>*@
                                 </div>
                             </div>
-                            <div class="card card-inverse card-success">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="m-r-20 align-self-center">
-                                            <h1 class="text-white"><i class="ti-pie-chart"></i></h1>
-                                        </div>
-                                        <div>
-                                            <h3 class="card-title">Ticket Status</h3>
-                                            <h6 class="card-subtitle"> 2017</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-6 align-self-center">
-                                                            <h2 class="font-light text-white">50 GB</h2>
-                                                        </div>
-                                                        <div class="col-6 p-t-10 p-b-20 text-right align-self-center">
-                                                            <div class="spark-count2" style="height:65px"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Column -->
-                                    </div>*@
-                    <!-- Row -->
-                    <!-- Row -->
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    @*<select class="custom-select pull-right">
-                                            <option selected="">July</option>
-                                            <option value="1">Aug</option>
-                                            <option value="2">Sept</option>
-                                            <option value="3">Oct</option>
-                                        </select>
-                                        <h4 class="card-title">Projects</h4>
-                                        <h6 class="card-subtitle">Viewing Projects</h6>*@
-                                </div>
-                                <div class="bg-light p-20">
-                                    <div class="d-flex">
-                                        <div class="align-self-center">
-                                            <h3 class="m-b-0">Total Projects</h3><small>Showing latest 3 projects</small>
-                                        </div>
-                                        <div class="ml-auto align-self-center">
-                                            <h2 class="text-success">@Model.Count()</h2>
-                                        </div>
-                                    </div>
-                                </div>
+                            <table>
+                                <tbody>
+                                    <tr class="active">
 
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover earning-box">
-                                            <thead>
-                                                <tr>
-                                                    <th colspan="1">No.</th>
-                                                    <th colspan="2">Name</th>
-                                                    <th colspan="2">Begin Date</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @if (User.IsInRole("Admin"))
-                                                {
-                                                    foreach (var item in Model.Take(3))
-                                                    {
-                                                        <tr>
-                                                            <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
-                                                            <td>
-                                                                <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
-                                                            </td>
-                                                            <td></td>
-                                                            <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
-                                                        </tr>
-                                                    }
-                                                }
-                                                else if (User.IsInRole("ProjectManager"))
-                                                {
-                                                    foreach (var item in Model.Take(3))
-                                                    {
-                                                        <tr>
-                                                            <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
-                                                            <td>
-                                                                <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
-                                                            </td>
-                                                            <td></td>
-                                                            <td>@Html.DisplayFor(modelItem => item.Created)</td>
-                                                        </tr>
-                                                    }
-                                                }
+                                        <td>
+                                            <a href="@Url.Action("Index", "Projects")" class="btn btn-info btn-rounded">View All Projects</a>
+                                        </td>
 
-                                                else if (User.IsInRole("Developer"))
-                                                {
-                                                    foreach (var item in Model.Take(3))
-                                                    {
-                                                        <tr>
-                                                            <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
-                                                            <td>
-                                                                <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
-                                                            </td>
-                                                            <td></td>
-                                                            <td>@Html.DisplayFor(modelItem => item.Created)</td>
-                                                        </tr>
-                                                    }
-                                                }
-
-                                                else if (User.IsInRole("Submitter"))
-                                                {
-                                                    foreach (var item in Model.Take(3))
-                                                    {
-                                                        <tr>
-                                                            <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
-                                                            <td>
-                                                                <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
-                                                            </td>
-                                                            <td></td>
-                                                            <td>@Html.DisplayFor(modelItem => item.Created)</td>
-                                                        </tr>
-                                                    }
-
-                                                }
-                                                @*</tbody>
-                                                    </table>*@
-                                    </div>
-                                </div>
-                                <table>
-                                    <tbody>
-                                        <tr class="active">
-
-                                            <td>
-                                                <a href="@Url.Action("Index", "Projects")" class="btn btn-info btn-rounded">View All Projects</a>
-                                            </td>
-
-                                        </tr>
+                                    </tr>
 
 
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <!-- Column -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Recent Tickets</h4>
-                            <h6 class="card-subtitle">Latest Tickets Added</h6>
-                        </div>
-                            <!-- ============================================================== -->
-                            <!-- Tickets Dash -->
-                            <!-- ============================================================== -->
-                        @*<div class="bg-light p-20">
+            </div>
+            <div class="col-lg-6">
+                <!-- Column -->
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Recent Tickets</h4>
+                        <h6 class="card-subtitle">Latest Tickets Added</h6>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- Tickets Dash -->
+                    <!-- ============================================================== -->
+                    @*<div class="bg-light p-20">
                             <div class="d-flex">
                                 <div class="align-self-center">
                                     <h3 class="m-b-0">Total Projects</h3><small>Showing latest 3 projects</small>
@@ -762,417 +773,175 @@
                             </div>
                         </div>*@
 
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover earning-box">
-                                    <thead>
-                                        <tr>
-                                            <th colspan="1">No.</th>
-                                            <th colspan="2">Name</th>
-                                            <th colspan="2">Begin Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-
-                                        @if (User.IsInRole("Admin"))
-                                        {
-                                            foreach (var item in Model.SelectMany(i => i.Tickets))
-                                            {
-                                                <tr>
-                                                    <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
-                                                    <td>
-                                                        <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
-                                                </tr>
-                                            }
-                                        }
-                                        else if (User.IsInRole("ProjectManager"))
-                                        {
-                                            foreach (var item in Model.SelectMany(i => i.Tickets))
-                                            {
-                                                <tr>
-                                                    <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
-                                                    <td>
-                                                        <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
-                                                </tr>
-                                            }
-                                        }
-
-                                        else if (User.IsInRole("Developer"))
-                                        {
-                                            foreach (var item in Model.SelectMany(i => i.Tickets))
-                                            {
-                                                <tr>
-                                                    <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
-                                                    <td>
-                                                        <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
-                                                </tr>
-                                            }
-                                        }
-
-                                        else if (User.IsInRole("Submitter"))
-                                        {
-                                            foreach (var item in Model.SelectMany(i => i.Tickets))
-                                            {
-                                                <tr>
-                                                    <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
-                                                    <td>
-                                                        <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
-                                                </tr>
-                                            }
-
-                                        }
-                                        @*</tbody>*@
-                                </table>
-                            </div>
-
-                            <table>
-                                <tbody>
-                                    <tr class="active">
-
-                                        <td>
-                                            <a href="@Url.Action("Index", "Tickets")" class="btn btn-danger btn-rounded">View All Tickets</a>
-                                        </td>
-
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover earning-box">
+                                <thead>
+                                    <tr>
+                                        <th colspan="1">No.</th>
+                                        <th colspan="2">Name</th>
+                                        <th colspan="2">Begin Date</th>
                                     </tr>
+                                </thead>
+                                <tbody>
 
 
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        foreach (var item in Model.SelectMany(i => i.Tickets))
+                                        {
+                                            <tr>
+                                                <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
+                                                <td>
+                                                    <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
+                                                </td>
+                                                <td></td>
+                                                <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
+                                            </tr>
+                                        }
+                                    }
+                                    else if (User.IsInRole("ProjectManager"))
+                                    {
+                                        foreach (var item in Model.SelectMany(i => i.Tickets))
+                                        {
+                                            <tr>
+                                                <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
+                                                <td>
+                                                    <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
+                                                </td>
+                                                <td></td>
+                                                <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
+                                            </tr>
+                                        }
+                                    }
 
-                                </tbody>
+                                    else if (User.IsInRole("Developer"))
+                                    {
+                                        foreach (var item in Model.SelectMany(i => i.Tickets))
+                                        {
+                                            <tr>
+                                                <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
+                                                <td>
+                                                    <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
+                                                </td>
+                                                <td></td>
+                                                <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
+                                            </tr>
+                                        }
+                                    }
+
+                                    else if (User.IsInRole("Submitter"))
+                                    {
+                                        foreach (var item in Model.SelectMany(i => i.Tickets))
+                                        {
+                                            <tr>
+                                                <td style="width:50px;">@Html.DisplayFor(modelItem => item.Id)</td>
+                                                <td>
+                                                    <h6>@Html.DisplayFor(modelItem => item.Title)</h6><small class="text-muted"></small>
+                                                </td>
+                                                <td></td>
+                                                <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
+                                            </tr>
+                                        }
+
+                                    }
+                                    @*</tbody>*@
                             </table>
                         </div>
-                    
-            <!-- Column -->
-           @* <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <button class="pull-right btn btn-sm btn-rounded btn-info" data-toggle="modal" data-target="#myModal">Add Task</button>
-                    <h4 class="card-title">To Do list</h4>
-                    <h6 class="card-subtitle">List of your next task to complete</h6>
-                    <!-- ============================================================== -->
-                    <!-- To do list widgets -->
-                    <!-- ============================================================== -->
-                    <div class="to-do-widget m-t-20">
-                        <!-- .modal for add task -->
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Add Task</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="form-group">
-                                                <label>Task name</label>
-                                                <input type="text" class="form-control" placeholder="Enter Task Name">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Assign to</label>
-                                                <select class="custom-select form-control pull-right">
-                                                    <option selected="">Sachin</option>
-                                                    <option value="1">Sehwag</option>
-                                                    <option value="2">Pritam</option>
-                                                    <option value="3">Alia</option>
-                                                    <option value="4">Varun</option>
-                                                </select>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
-                                    </div>
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
-                        <ul class="list-task todo-list list-group m-b-0" data-role="tasklist">
-                            <li class="list-group-item" data-role="task">
-                                <div class="checkbox checkbox-info">
-                                    <input type="checkbox" id="inputSchedule" name="inputCheckboxesSchedule">
-                                    <label for="inputSchedule" class=""> <span>Schedule meeting with</span> </label>
-                                </div>
-                                <ul class="assignedto">
-                                    <li><img src="../assets/images/users/1.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave"></li>
-                                    <li><img src="../assets/images/users/2.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica"></li>
-                                    <li><img src="../assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                    <li><img src="../assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
-                                </ul>
-                            </li>
-                            <li class="list-group-item" data-role="task">
-                                <div class="checkbox checkbox-info">
-                                    <input type="checkbox" id="inputCall" name="inputCheckboxesCall">
-                                    <label for="inputCall" class=""> <span>Give Purchase report to</span> <span class="label label-danger">Today</span> </label>
-                                </div>
-                                <ul class="assignedto">
-                                    <li><img src="../assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka"></li>
-                                    <li><img src="../assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina"></li>
-                                </ul>
-                            </li>
-                            <li class="list-group-item" data-role="task">
-                                <div class="checkbox checkbox-info">
-                                    <input type="checkbox" id="inputBook" name="inputCheckboxesBook">
-                                    <label for="inputBook" class=""> <span>Book flight for holiday</span> </label>
-                                </div>
-                                <div class="item-date"> 26 jun 2017</div>
-                            </li>
-                            <li class="list-group-item" data-role="task">
-                                <div class="checkbox checkbox-info">
-                                    <input type="checkbox" id="inputForward" name="inputCheckboxesForward">
-                                    <label for="inputForward" class=""> <span>Forward all tasks</span> <span class="label label-warning">2 weeks</span> </label>
-                                </div>
-                                <div class="item-date"> 26 jun 2017</div>
-                            </li>
-                            <li class="list-group-item" data-role="task">
-                                <div class="checkbox checkbox-info">
-                                    <input type="checkbox" id="inputRecieve" name="inputCheckboxesRecieve">
-                                    <label for="inputRecieve" class=""> <span>Recieve shipment</span> </label>
-                                </div>
-                                <div class="item-date"> 26 jun 2017</div>
-                            </li>
-                            <li class="list-group-item" data-role="task">
-                                <div class="checkbox checkbox-info">
-                                    <input type="checkbox" id="inputForward2" name="inputCheckboxesd">
-                                    <label for="inputForward2" class=""> <span>Important tasks</span> <span class="label label-success">2 weeks</span> </label>
-                                </div>
-                                <ul class="assignedto">
-                                    <li><img src="../assets/images/users/1.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Assign to Steave"></li>
-                                    <li><img src="../assets/images/users/2.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Assign to Jessica"></li>
-                                    <li><img src="../assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Assign to Selina"></li>
-                                </ul>
-                            </li>
-                        </ul>
+
+                        <table>
+                            <tbody>
+                                <tr class="active">
+
+                                    <td>
+                                        <a href="@Url.Action("Index", "Tickets")" class="btn btn-danger btn-rounded">View All Tickets</a>
+                                    </td>
+
+                                </tr>
+
+
+
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Row -->
-    <!-- Row -->
-    <div class="row">
-        @*<!-- Column -->
-                <div class="col-lg-8 col-xlg-9">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Activity Timeline</h4>
-                            <h6 class="card-subtitle">users activity thourout the day</h6>
-                            <div class="profiletimeline m-t-40">
-                                <div class="sl-item">
-                                    <div class="sl-left"> <img src="../assets/images/users/1.jpg" alt="user" class="img-circle"> </div>
-                                    <div class="sl-right">
-                                        <div>
-                                            <a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                            <p>assign a new task <a href="#"> Design weblayout</a></p>
-                                            <div class="row">
-                                                <div class="col-lg-3 col-md-6 m-b-20"><img src="../assets/images/big/img1.jpg" alt="user" class="img-responsive radius"></div>
-                                                <div class="col-lg-3 col-md-6 m-b-20"><img src="../assets/images/big/img2.jpg" alt="user" class="img-responsive radius"></div>
-                                                <div class="col-lg-3 col-md-6 m-b-20"><img src="../assets/images/big/img3.jpg" alt="user" class="img-responsive radius"></div>
-                                                <div class="col-lg-3 col-md-6 m-b-20"><img src="../assets/images/big/img4.jpg" alt="user" class="img-responsive radius"></div>
-                                            </div>
-                                            <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="sl-item">
-                                    <div class="sl-left"> <img src="../assets/images/users/2.jpg" alt="user" class="img-circle"> </div>
-                                    <div class="sl-right">
-                                        <div>
-                                            <a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                            <div class="m-t-20 row">
-                                                <div class="col-md-3 col-xs-12"><img src="../assets/images/big/img1.jpg" alt="user" class="img-responsive radius"></div>
-                                                <div class="col-md-9 col-xs-12">
-                                                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p> <a href="#" class="btn btn-success"> Design weblayout</a>
-                                                </div>
-                                            </div>
-                                            <div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="sl-item">
-                                    <div class="sl-left"> <img src="../assets/images/users/3.jpg" alt="user" class="img-circle"> </div>
-                                    <div class="sl-right">
-                                        <div>
-                                            <a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                            <p class="m-t-10"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper </p>
-                                        </div>
-                                        <div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="sl-item">
-                                    <div class="sl-left"> <img src="../assets/images/users/4.jpg" alt="user" class="img-circle"> </div>
-                                    <div class="sl-right">
-                                        <div>
-                                            <a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
-                                            <blockquote class="m-t-10">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                                            </blockquote>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-xlg-3">
+
                     <!-- Column -->
-                    <div class="card">
-                        <img class="card-img-top" src="../assets/images/background/profile-bg.jpg" alt="Card image cap">
-                        <div class="card-body little-profile text-center">
-                            <div class="pro-img"><img src="../assets/images/users/4.jpg" alt="user" /></div>
-                            <h3 class="m-b-0">Angela Dominic</h3>
-                            <p>Web Designer &amp; Developer</p>
-                            <button href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn btn-info btn-md btn-rounded">Follow</button>
-                            <div class="row text-center m-t-20">
-                                <div class="col-lg-4 col-md-4 m-t-20">
-                                    <h3 class="m-b-0 font-light">1099</h3><small>Articles</small>
-                                </div>
-                                <div class="col-lg-4 col-md-4 m-t-20">
-                                    <h3 class="m-b-0 font-light">23,469</h3><small>Followers</small>
-                                </div>
-                                <div class="col-lg-4 col-md-4 m-t-20">
-                                    <h3 class="m-b-0 font-light">6035</h3><small>Following</small>
-                                </div>
+                    <!-- ============================================================== -->
+                    <!-- End PAge Content -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Right sidebar -->
+                    <!-- ============================================================== -->
+                    <!-- .right-sidebar -->
+                    <div class="right-sidebar">
+                        <div class="slimscrollright">
+                            <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                            <div class="r-panel-body">
+                                <ul id="themecolors" class="m-t-20">
+                                    <li><b>With Light sidebar</b></li>
+                                    <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+
+                                    <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                                    <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+
+                                </ul>
+
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
-                    <div class="card">
-                        <div class="card-body bg-inverse" style="background: url(../assets/images/background/user-info.jpg) / cover;">
-                            <h4 class="text-white card-title">Employee list</h4>
-                            <h6 class="card-subtitle text-white m-0 op-5">Checkout employee list here</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="message-box contact-box">
-                                <h2 class="add-ct-btn"><button type="button" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button></h2>
-                                <div class="message-widget contact-widget">
-                                    <!-- Message -->
-                                    <a href="#">
-                                        <div class="user-img"> <img src="../assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Pavan kumar</h5> <span class="mail-desc">info@wrappixel.com</span>
-                                        </div>
-                                    </a>
-                                    <!-- Message -->
-                                    <a href="#">
-                                        <div class="user-img"> <img src="../assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Sonu Nigam</h5> <span class="mail-desc">pamela1987@gmail.com</span>
-                                        </div>
-                                    </a>
-                                    <!-- Message -->
-                                    <a href="#">
-                                        <div class="user-img"> <span class="round">A</span> <span class="profile-status away pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Arijit Sinh</h5> <span class="mail-desc">cruise1298.fiplip@gmail.com</span>
-                                        </div>
-                                    </a>
-                                    <!-- Message -->
-                                    <a href="#">
-                                        <div class="user-img"> <img src="../assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
-                                        <div class="mail-contnet">
-                                            <h5>Pavan kumar</h5> <span class="mail-desc">kat@gmail.com</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Right sidebar -->
+                    <!-- ============================================================== -->
                 </div>
-            </div>*@
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <div class="right-sidebar">
-                <div class="slimscrollright">
-                    <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
-                    <div class="r-panel-body">
-                        <ul id="themecolors" class="m-t-20">
-                            <li><b>With Light sidebar</b></li>
-                            <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
-
-                            <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
-                            <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
-
-                        </ul>
-
-                    </div>
-                </div>
+                <!-- ============================================================== -->
+                <!-- End Container fluid  -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                @*<footer class="footer"> © 2017 Admin Press Admin by themedesigner.in </footer>*@
+                <!-- ============================================================== -->
+                <!-- End footer -->
+                <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
-            <!-- End Right sidebar -->
+           </div> <!-- End Page wrapper  -->
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Container fluid  -->
+        <!-- End Wrapper --
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        <!-- footer -->
+        <!-- All Jquery -->
         <!-- ============================================================== -->
-        @*<footer class="footer"> © 2017 Admin Press Admin by themedesigner.in </footer>*@
+        <script src="~/Assets/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="~/Assets/plugins/bootstrap/js/popper.min.js"></script>
+        <script src="~/Assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="~/Assets/main/js/jquery.slimscroll.js"></script>
+        <!--Wave Effects -->
+        <script src="~/Assets/main/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="~/Assets/main/js/sidebarmenu.js"></script>
+        <!--stickey kit -->
+        <script src="~/Assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+        <!--Custom JavaScript -->
+        <script src="~/Assets/main/js/custom.min.js"></script>
         <!-- ============================================================== -->
-        <!-- End footer -->
+        <!-- This page plugins -->
         <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper --
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="~/Assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="~/Assets/plugins/bootstrap/js/popper.min.js"></script>
-    <script src="~/Assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="~/Assets/main/js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="~/Assets/main/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="~/Assets/main/js/sidebarmenu.js"></script>
-    <!--stickey kit -->
-    <script src="~/Assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="~/Assets/main/js/custom.min.js"></script>
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
-    <!--sparkline JavaScript -->
-    <script src="~/Assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <!--morris JavaScript -->
-    <script src="~/Assets/plugins/raphael/raphael-min.js"></script>
-    <script src="~/Assets/plugins/morrisjs/morris.min.js"></script>
-    <!-- Chart JS -->
-    <script src="~/Assets/main/js/dashboard1.js"></script>
-    <!-- ============================================================== -->
-    <!-- Style switcher -->
-    <!-- ============================================================== -->
-    <script src="~/Assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+        <!--sparkline JavaScript -->
+        <script src="~/Assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <!--morris JavaScript -->
+        <script src="~/Assets/plugins/raphael/raphael-min.js"></script>
+        <script src="~/Assets/plugins/morrisjs/morris.min.js"></script>
+        <!-- Chart JS -->
+        <script src="~/Assets/main/js/dashboard1.js"></script>
+        <!-- ============================================================== -->
+        <!-- Style switcher -->
+        <!-- ============================================================== -->
+        <script src="~/Assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
 
 </html>>

@@ -26,7 +26,7 @@ namespace jdean_bugtracker.Models
         public string Purpose { get; set; }
     }
 
-    public class ChangeNameViewModel
+    public class UpdateInformationViewModel
     {
         //[Display(Name = "Current First Name")]
         //public string FirstName { get; set; }
@@ -39,6 +39,9 @@ namespace jdean_bugtracker.Models
 
         [Display(Name = "Updated Last Name")]
         public string NewLastName { get; set; }
+
+        [Display(Name = "Updated Profile Pic")]
+        public string NewProfilePic { get; set; }
     }
 
     public class SetPasswordViewModel

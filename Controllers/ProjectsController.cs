@@ -14,9 +14,8 @@ using Microsoft.AspNet.Identity;
 namespace jdean_bugtracker.Controllers
 {
     [Authorize]
-    public class ProjectsController : Controller
+    public class ProjectsController : Universal
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
         private ProjectAssignHelper helper = new ProjectAssignHelper();
 
         // GET: Projects
