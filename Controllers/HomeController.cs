@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace jdean_bugtracker.Controllers
 {
-    [Authorize]
+    
     public class HomeController : Universal
     {
         [Authorize]
@@ -39,6 +39,7 @@ namespace jdean_bugtracker.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

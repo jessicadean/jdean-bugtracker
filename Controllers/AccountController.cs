@@ -135,14 +135,14 @@ namespace jdean_bugtracker.Controllers
             }
         }
 
-        //
+        //            //var timezones = TimeZoneInfo.GetSystemTimeZones();
+        //var defaulttimezone = TimeZoneInfo.FindSystemTimeZoneById("US Eastern Standard Time");
+        //ViewBag.TimeZone = new SelectList(timezones, "Id", "Id");
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
-            //var timezones = TimeZoneInfo.GetSystemTimeZones();
-            //var defaulttimezone = TimeZoneInfo.FindSystemTimeZoneById("US Eastern Standard Time");
-            //ViewBag.TimeZone = new SelectList(timezones, "Id", "Id");
+
             return View();
         }
 
@@ -153,7 +153,7 @@ namespace jdean_bugtracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase image)
         {
-            var pPic = "/Assets/images/users/profile.png";
+            var pPic = "/Assets/images/avatar.png";
 
             if (image != null && image.ContentLength > 0)
             {

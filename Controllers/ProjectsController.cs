@@ -27,11 +27,11 @@ namespace jdean_bugtracker.Controllers
                 ViewBag.UserTimeZone = db.Users.Find(User.Identity.GetUserId()).TimeZone;
                 var userId = User.Identity.GetUserId();
                 var userProjects = helper.ListUserProjects(userId);
-                return View(userProjects);
+                return View(userProjects.Where(p => p.Archived == false).OrderByDescending(p => p.Created));
             }
             else
             {
-                return View();               
+                return View(db.Projects.Where(p => p.Archived == false).OrderByDescending(p => p.Created));
             }
 
         }
@@ -54,8 +54,8 @@ namespace jdean_bugtracker.Controllers
         // GET: Projects/Details/5
         public ActionResult Details(int? id)
         {
-            
-                if (id == null)
+
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -66,16 +66,16 @@ namespace jdean_bugtracker.Controllers
             }
             ProjectAssignHelper helper = new ProjectAssignHelper();
             var user = db.Users.Find(User.Identity.GetUserId());
-            
+
             if (helper.IsUserOnProject(user.Id, project.Id) == true || User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
-            { 
+            {
                 return View(project);
             }
             else
             {
                 return RedirectToAction("Index");
+            }
         }
-    }
 
         // GET: Projects/Create
         [Authorize(Roles = "Admin, ProjectManager")]
@@ -127,7 +127,7 @@ namespace jdean_bugtracker.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, ProjectManager")]
-        public ActionResult Edit([Bind(Include = "Id,Created,Updated,Title,Description,AuthorId")] Project project)
+        public ActionResult Edit([Bind(Include = "Id,Archived,Created,Updated,Title,Description,AuthorId")] Project project)
         {
             if (ModelState.IsValid)
             {

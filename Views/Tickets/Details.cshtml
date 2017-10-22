@@ -5,7 +5,7 @@
 @{
     ViewBag.Title = "Details";
 }
-<link href="~/Assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+<link href="~/Assets/sweetalert/sweetalert.css" rel="stylesheet" />
 
 <div class="container-fluid">
     <div class="row">
@@ -88,18 +88,22 @@
                             </dd>
 
                         </dl>
-                </div>
-                <p>
-                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-                    @Html.ActionLink("Back to List", "Index")
-                </p>
 
+                    <p>
+
+                        <a href=" @Url.Action("Edit", "Tickets", new { id = Model.Id })" class="btn btn-primary"><i class="fa fa-edit" aria-label="edit"></i> Edit</a>
+                        <a href=" @Url.Action("Index", "Tickets", new { id = Model.Id })" class="btn btn-primary"><i class="fa fa-list" aria-label="list"></i> Back</a>
+
+                        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                            @Html.ActionLink("Back to List", "Index")*@
+                    </p>
+                </div>
             </div>
         </div>
 
         <!--Ticket Attachment Upload Card-->
         <div class="col-md-6">
-            <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+            <div class="card card-outline-inverse">
                 <div class="card-header">
                     <h4 class="m-b-0 text-white">Upload Attachment</h4>
                 </div>
@@ -107,39 +111,39 @@
                     <h3 class="card-title">Choose various image formats or pdf.</h3>
                     <p class="card-text">Include a brief description of your attachment.</p>
 
-                    @foreach (var ticketattachment in Model.Attachments.OrderByDescending(c => c.Id))
-                    {
-                        <p class="card-text">
-                            <a href="@ticketattachment.FileUrl">
-                                <br />@ticketattachment.Description
-                            </a> <br />
-                            Uploader: @ticketattachment.Author.FullName <br />
-                            Date: @ticketattachment.Created
-                        </p>
-                        <!--Delete Attachment-->
-                        if (User.IsInRole("Admin") || User.IsInRole("ProjectManager") || User.Identity.GetUserId() == ticketattachment.AuthorId)
+                    @*foreach (var ticketattachment in Model.Attachments.OrderByDescending(c => c.Id))
                         {
-                            using (Html.BeginForm("DeleteAttachment", "Tickets", new { id = ticketattachment.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
-                            {
-                                @Html.AntiForgeryToken()
-                                <input type="button" id="deleteattach" class="btn btn-warning" value="Delete File" />
-                            }
+                            <p class="card-text">
+                                <a href="@ticketattachment.FileUrl">
+                                    <br />@ticketattachment.Description
+                                </a> <br />
+                                Uploader: @ticketattachment.Author.FullName <br />
+                                Date: @ticketattachment.Created
+                            </p>
+                                        Delete Attachment
+                            if (User.IsInRole("Admin") || User.IsInRole("ProjectManager") || User.Identity.GetUserId() == ticketattachment.AuthorId)
+                                        {
+                                            using (Html.BeginForm("DeleteAttachment", "Tickets", new { id = ticketattachment.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                < input type = "button" id = "deleteattach" class="btn btn-warning" value="Delete File" />
+                                }
                         }
-                    }
+                        }*@
                     <!--Create Attachment-->
                     <div class="form-horizontal m-t-40">
                         @using (Html.BeginForm("CreateAttachment", "Tickets", FormMethod.Post, new { enctype = "Multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             <input type="number" name="TicketId" value="@Model.Id" hidden />
-                            <div class="form-group btn-group">
+                            <div class="form-group">
                                 <label class="control-label col-md-4">Upload File</label>
-                                <div class="col-md-8">
+                                <div class="form-group">
                                     <input name="attachFile" type="file" class="form-control" />
                                     <div class="form-group">
                                         <input type="text" name="Description" class="form-control" rows="5" placeholder="File description" required />
                                     </div>
-                                    <button type="submit" class="btn btn-inverse">Attach</button>
+                                    <button type="submit" class="btn btn-warning">Attach</button>
 
                                 </div>
                             </div>
@@ -147,43 +151,101 @@
                     </div>
                     <!--End Create Attachment-->
                 </div>
+                <div class="card card-body">
+                    <h3 class="box-title m-b-0">Add a Comment</h3>
+                    <p class="text-muted m-b-30 font-13"> Signed in as @User.Identity.Name</p>
+                    @if (Request.IsAuthenticated)
+            {
+
+                using (Html.BeginForm("CreateComment", "Tickets", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                            @Html.AntiForgeryToken()
+                            <input type="number" name="TicketId" value="@Model.Id" hidden />
+                            <div class="form-horizontal">
+                                <div class="form-group row">
+                                    <label>Comment Box</label>
+
+                                    <textarea class="form-control" rows="5" name="Body"></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group m-b-0">
+                                <div class="offset-sm-3 col-sm-9">
+                                    <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">Submit</button>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
             </div>
             <!--End Ticket Attachment Upload Card-->
 
         </div>
-        <!--Submit Comment -->
-        <div class="col-md-6">
-            <div class="card card-body">
-                <h3 class="box-title m-b-0">Add a Comment</h3>
-                <p class="text-muted m-b-30 font-13"> Signed in as @User.Identity.Name</p>
-                @if (Request.IsAuthenticated)
-                {
 
-                    using (Html.BeginForm("CreateComment", "Tickets", FormMethod.Post, new { @class = "form-horizontal" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <input type="number" name="TicketId" value="@Model.Id" hidden />
-                        <div class="form-horizontal">
-                            <div class="form-group row">
-                                <label>Comment Box</label>
-
-                                <textarea class="form-control" rows="5" name="Body"></textarea>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group m-b-0">
-                            <div class="offset-sm-3 col-sm-9">
-                                <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">Submit</button>
-                            </div>
-                        </div>
-                    }
-                }
-            </div>
-
-        </div>
         <!--End Comment Box-->
+
     </div> <!--End Row-->
+    <!--Attachments Table-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Attachments</h4>
+                    <h6 class="card-subtitle">Displaying Authorized Users' Attachments</h6>
+                    <div class="table-responsive">
+                        <table class="table color-bordered-table inverse-bordered-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>File Title</th>
+                                    <th>Upload Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var ticketattachment in Model.Attachments.OrderByDescending(c => c.Id))
+                                {
+                                    <tr>
+                                        <td>@ticketattachment.Author.FullName</td>
+                                        <td>
+                                            <a href="@ticketattachment.FileUrl">
+                                                @ticketattachment.Description
+                                            </a>
+                                        </td>
+                                        <td>@ticketattachment.Created.LocalDateTime</td>
+                                        <th>
+
+                                            <!--Delete Attach -->
+                                            @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager") || User.Identity.GetUserId() == ticketattachment.AuthorId)
+                                            {
+                                                using (Html.BeginForm("DeleteAttachment", "Tickets", new { id = ticketattachment.Id }, FormMethod.Post, new { @class = "form-horizontal" }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="button" id="deleteattach" class="btn btn-sm btn-warning" value="&nbsp;X&nbsp;">
+                                                    @*<button type="submit" id="deleteattach" class="btn btn-warning" value="Delete File" />*@
+                                                    @*<button type="submit" id="deletattach" class="btn btn-sm btn-warning"><i class="fa fa-trash-o"></i>Remove</button>*@
+                                                }
+                                            }
+                                            
+
+                                            <!--End Delete Comment-->
+                                            
+
+                                        </th>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                        <!--End delete/edit comment-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--Comments Table-->
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -216,8 +278,9 @@
                                                 {
                                                     @Html.AntiForgeryToken()
 
-                                                    <a href="@Url.Action("DeleteComment","Tickets")" class="btn btn-sm btn-outline-dark" id="deletecomment"><i class="fa fa-trash-o"></i></a>
-                                                    <a href="#myDIV" class="btn btn-sm btn-outline-dark" data-toggle="collapse"><i class="fa fa-pencil-square-o"></i></a>
+                                                    @*<button type="submit" id="deletecomment" class="btn btn-sm btn-outline-dark">onclick="deletecomment"<i class="fa fa-trash-o"></i></button>*@
+                                                    <input type="button" id= "deletecomment" class="btn btn-sm btn-inverse" value="&nbsp;X&nbsp;" >
+                                                    <a href="#myDIV" class="btn btn-sm btn-inverse" data-toggle="collapse"><i class="fa fa-pencil-square-o"></i></a>
                                                 }
 
                                         <!--End Delete Comment-->
@@ -261,7 +324,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Ticket History Changelog</h4>
-            <h6 class="card-subtitle">Timelinke of changes made by users</h6>
+            <h6 class="card-subtitle">Timeline of changes made by users</h6>
             <div class="profiletimeline m-t-40">
 
                 <hr>
@@ -282,183 +345,182 @@
 
 
             </div>
-   </div>
-</div>
-                        <!--card-->
-                        <!--Ticket Histories-->
-                        <div class="row">
-                            <div class="col">
-                                <div class="card">
-                                    <h4 class="card-title">Ticket History</h4>
-                                    <h6 class="card-subtitle">Ticket History Changelog</h6>
-                                    <div class="table-responsive m-t-40">
-                                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>Project Id</th>
-                                                    @*<th>TicketId</th>*@
-                                                    <th>Property</th>
-                                                    <th>Old Value</th>
-                                                    <th>New Value</th>
-                                                    <th>Created</th>
-                                                    <th>Edited By</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Id</th>
-                                                    <th>TicketId</th>
-                                                    <th>Property</th>
-                                                    <th>Old Value</th>
-                                                    <th>New Value</th>
-                                                    <th>Created</th>
-                                                    <th>Edited By</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody>
-                                                @foreach (var history in Model.Histories)
-                                                {
-                                                    <tr>
+        </div>
+    </div>
+    <!--card-->
+    <!--Ticket Histories-->
+    @*<div class="row">
+            <div class="col">
+                <div class="card">
+                    <h4 class="card-title">Ticket History</h4>
+                    <h6 class="card-subtitle">Ticket History Changelog</h6>
+                    <div class="table-responsive m-t-40">
+                        <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Project Id</th>
+                                    @*<th>TicketId</th>
+                                    <th>Property</th>
+                                    <th>Old Value</th>
+                                    <th>New Value</th>
+                                    <th>Created</th>
+                                    <th>Edited By</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>TicketId</th>
+                                    <th>Property</th>
+                                    <th>Old Value</th>
+                                    <th>New Value</th>
+                                    <th>Created</th>
+                                    <th>Edited By</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach (var history in Model.Histories)
+                                {
+                                    <tr>
 
-                                                        <td>@history.Id</td>
-                                                        @*<td>@history.TicketId</td>*@
-                                                        <td>@history.Property</td>
-                                                        <td>@history.OldValue</td>
-                                                        <td>@history.NewValue</td>
-                                                        <td>@history.Created.LocalDateTime</td>
-                                                        <td>@history.Author.FullName</td>
+                                        <td>@history.Id</td>
+                                        @*<td>@history.TicketId</td>
+                                        <td>@history.Property</td>
+                                        <td>@history.OldValue</td>
+                                        <td>@history.NewValue</td>
+                                        <td>@history.Created.LocalDateTime</td>
+                                        <td>@history.Author.FullName</td>
 
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        </div>
-
-       
-
-        <!--Data Table for Ticket Details-->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
+        </div>*@
+</div>
+          
 
 
-        @section Scripts {
-            <!--Data Table-->
-            <script src="~/Assets/plugins/datatables/jquery.dataTables.min.js"></script>
-            <script>
-                $(document).ready(function () {
-                    $('#myTable').DataTable();
-                    $(document).ready(function () {
-                        var table = $('#example').DataTable({
-                            "columnDefs": [{
-                                "visible": false,
-                                "targets": 2
-                            }],
-                            "order": [
-                                [2, 'asc']
-                            ],
-                            "displayLength": 25,
-                            "drawCallback": function (settings) {
-                                var api = this.api();
-                                var rows = api.rows({
-                                    page: 'current'
-                                }).nodes();
-                                var last = null;
-                                api.column(2, {
-                                    page: 'current'
-                                }).data().each(function (group, i) {
-                                    if (last !== group) {
-                                        $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
-                                        last = group;
-                                    }
-                                });
+
+<!--Data Table for Ticket Details-->
+<!-- Container fluid  -->
+<!-- ============================================================== -->
+
+
+@section Scripts {
+
+    <!--Data Table-->
+    @*<script src="~/Assets/datatables/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+            $(document).ready(function () {
+                var table = $('#example').DataTable({
+                    "columnDefs": [{
+                        "visible": false,
+                        "targets": 2
+                    }],
+                    "order": [
+                        [2, 'asc']
+                    ],
+                    "displayLength": 25,
+                    "drawCallback": function (settings) {
+                        var api = this.api();
+                        var rows = api.rows({
+                            page: 'current'
+                        }).nodes();
+                        var last = null;
+                        api.column(2, {
+                            page: 'current'
+                        }).data().each(function (group, i) {
+                            if (last !== group) {
+                                $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                                last = group;
                             }
                         });
-                        // Order by the grouping
-                        $('#example tbody').on('click', 'tr.group', function () {
-                            var currentOrder = table.order()[0];
-                            if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-                                table.order([2, 'desc']).draw();
-                            } else {
-                                table.order([2, 'asc']).draw();
-                            }
-                        });
-                    });
-                });
-                $('#example23').DataTable({
-                    dom: 'Bfrtip',
-                    buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print'
-                    ]
-                });
-            </script>
-            <!--Sweet Alerts-->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.all.min.js"></script>
-            <script src="~/Assets/plugins/sweetalert/sweetalert-dev.js"></script>
-            <script src="~/Assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
-            <script src="~/Assets/plugins/sweetalert/sweetalert.min.js"></script>
-
-            <script>
-                $('#deletecomment').on('click', function (e) {
-                    e.preventDefault();
-                    var form = $(this).parents('form');
-                    swal({
-                        title: "Are you sure?",
-                        text: "Once deleted, you will not be able to recover this comment!",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                        showCloseButton: true,
-                        showCancelButton: true,
-                        focusConfirm: false,
-                        confirmButtonText:
-                        'Yes, delete',
-                        confirmButtonAriaLabel: 'Thumbs up, great!',
-                        cancelButtonText:
-                        'Cancel',
-                        cancelButtonAriaLabel: 'Thumbs down',
-                        closeOnConfirm: false
-                    }, function (isConfirm) {
-                        if (isConfirm) form.submit();
                     }
-                    )
-
-                        ;
-                })
-            </script>
-            <script>
-                $('#deleteattach').on('click', function (e) {
-                    e.preventDefault();
-                    var form = $(this).parents('form');
-                    swal({
-                        title: "Are you sure?",
-                        text: "Once deleted, you will not be able to recover this file!",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                        showCloseButton: true,
-                        showCancelButton: true,
-                        focusConfirm: false,
-                        confirmButtonText:
-                        'Yes, delete',
-                        confirmButtonAriaLabel: 'Thumbs up, great!',
-                        cancelButtonText:
-                        'Cancel',
-                        cancelButtonAriaLabel: 'Thumbs down',
-                        closeOnConfirm: false
-                    }, function (isConfirm) {
-                        if (isConfirm) form.submit();
+                });
+                // Order by the grouping
+                $('#example tbody').on('click', 'tr.group', function () {
+                    var currentOrder = table.order()[0];
+                    if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                        table.order([2, 'desc']).draw();
+                    } else {
+                        table.order([2, 'asc']).draw();
                     }
-                    )
+                });
+            });
+        });
+        $('#example23').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    </script>*@
+    <!--Sweet Alerts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.all.min.js"></script>
+    <script src="~/Assets/sweetalert/sweetalert-dev.js"></script>
+    <script src="~/Assets/sweetalert/jquery.sweet-alert.custom.js"></script>
+    <script src="~/Assets/sweetalert/sweetalert.min.js"></script>
 
-                        ;
-                })
-            </script>
+    <script>
+        $('#deletecomment').on('click', function (e) {
+            e.preventDefault();
+            var form = $(this).parents('form');
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this comment!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText:
+                'Yes, delete',
+                confirmButtonAriaLabel: 'Thumbs up, great!',
+                cancelButtonText:
+                'Cancel',
+                cancelButtonAriaLabel: 'Thumbs down',
+                closeOnConfirm: false
+            }, function (isConfirm) {
+                if (isConfirm) form.submit();
+            }
+            )
 
-        }
+                ;
+        })
+    </script>
+    <script>
+        $('#deleteattach').on('click', function (e) {
+            e.preventDefault();
+            var form = $(this).parents('form');
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText:
+                'Yes, delete',
+                confirmButtonAriaLabel: 'Thumbs up, great!',
+                cancelButtonText:
+                'Cancel',
+                cancelButtonAriaLabel: 'Thumbs down',
+                closeOnConfirm: false
+            }, function (isConfirm) {
+                if (isConfirm) form.submit();
+            }
+            )
+
+                ;
+        })
+    </script>
+
+}

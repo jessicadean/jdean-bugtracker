@@ -68,18 +68,19 @@
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Ticket No.</th>
-                                                <th>Assigned To</th>
-                                                <th>Submitted By</th>
+                                                <th> No.</th>
+                                                <th>@Html.DisplayNameFor(model => model.Title)</th>
+                                                <th>Assignee</th>
+                                                <th>Submitter</th>
                                                 <th>Project</th>
                                                 <th>Priority</th>
                                                 <th>Status</th>
                                                 <th>Type</th>
-                                                <th>@Html.DisplayNameFor(model => model.Title)</th>
+                                                
 
                                                 <th>@Html.DisplayNameFor(model => model.Created)</th>
                                                 <th>@Html.DisplayNameFor(model => model.Updated)</th>
-                                                <th></th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -87,21 +88,22 @@
                                             {
                                                 <tr>
                                                     <td>#@Html.DisplayFor(modelItem => item.Id)</td>
+                                                    <td>
+                                                       
+                                                            @Html.DisplayFor(modelItem => item.Title) <br />
+                                                            @Html.ActionLink("Details", "Details", new { id = item.Id }) 
+                                                </td>
                                                     <td>@Html.DisplayFor(modelItem => item.AssignToUser.FirstName)</td>
                                                     <td>@Html.DisplayFor(modelItem => item.OwnerUser.FullName)</td>
                                                     <td>@Html.DisplayFor(modelItem => item.Project.Title)</td>
                                                     <td>@Html.DisplayFor(modelItem => item.TicketPriority.Name)</td>
                                                     <td>@Html.DisplayFor(modelItem => item.TicketStatus.Name)</td>
                                                     <td>@Html.DisplayFor(modelItem => item.TicketType.Name)</td>
-                                                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                                                    
 
                                                     <td>@Html.DisplayFor(modelItem => item.Created.LocalDateTime)</td>
                                                     <td>@Html.DisplayFor(modelItem => item.Updated)</td>
-                                                    <td>
-                                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                                                    </td>
+                                                   
 
                                                 </tr>
                                             }
@@ -114,12 +116,15 @@
                        
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
                 @section Scripts{
                     <!-- This is data table -->
-                    <script src="~/Assets/plugins/datatables/jquery.dataTables.min.js"></script>
+                    <script src="~/Assets/datatables/jquery.dataTables.min.js"></script>
                     <script>
                         $(document).ready(function () {
                             $('#myTable').DataTable();

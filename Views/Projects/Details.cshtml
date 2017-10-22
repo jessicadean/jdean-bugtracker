@@ -4,60 +4,126 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Project</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
+<div class="col-md-6">
+    <div class="card card-outline-primary">
+        <div class="card-header">
+            <h4 class="m-b-0 text-white">@Html.DisplayFor(model => model.Title)</h4>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title"></h3>
+            <p class="card-text">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Created)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Created.LocalDateTime)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Updated)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Updated)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+                    @*<dt>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Title)
+                        </dd>*@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AuthorId)
-        </dt>
+                    <dt>
+                        Project Created By
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AuthorId)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.AuthorId)
+                    </dd>
 
-    </dl>
+                    <dt>Archived?</dt>
+                  
+                        @Html.CheckBoxFor(model => model.Archived, new { disabled = "disabled", style = "left:0px; position:initial; opacity: 1" })
+                    
+                </dl>
+
+                @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
+            {
+                    <a href=" @Url.Action("Edit", "Projects", new { id = Model.Id })" class="btn btn-inverse"><i class="fa fa-edit" aria-label="edit"></i> Edit</a>
+                }
+            </p>
+
+        </div>
+    </div>
 </div>
 
+@*
+
+    <div>
+        <h4>Project</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Created)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Created)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Updated)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Updated)
+            </dd>
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AuthorId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AuthorId)
+            </dd>
+
+            <dt>Archived?</dt>
+            <dd>
+            @Html.CheckBoxFor(model => model.Archived, new { disabled = "disabled", style = "left:0px; position:initial; opacity: 1" })</dd>
+        </dl>
+    </div>*@
+
 <p>
-    @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
-        {
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
-    } |
-    @Html.ActionLink("Back to List", "Index") |
-  
+
+    @Html.ActionLink("Back to List", "Index") 
+
 </p>

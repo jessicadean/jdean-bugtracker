@@ -19,7 +19,7 @@
 
     
     <!-- Bootstrap Core CSS -->
-    <link href="~/Assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="~/Assets/main/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
@@ -33,29 +33,118 @@
 </head>
 
 
-    <body style="background-image:url(~/Assets/images/background/startupRoom.jpg)">
+    <body style="background-image:url(~/Assets/images/background/bugtrackerBG.png)">
         <!-- ============================================================== -->
         <!-- Main wrapper - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <section id="wrapper" style="position:relative">
 
-            <div class="error-box">
-                <div class="error-body text-center">
-                    <a href="@Url.Action("Index","Home")">
-                        <img src="~/Assets/images/springer.png" />
-                    </a>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <span style="align-content:center">
+                            <a href="@Url.Action("Index","Home")">
+                                <img src="~/Assets/images/springer.png" />
+
+                            </a>
+                        </span>
+
+                    </div>
+                        <div class="card" align="center">
+                            
+                           
+                            <h4 class="card-title m-t-40" id="9">
+                                SPRINGER IS A SOFTWARE &amp; HARDWARE TICKET TRACKING APP <br />
+                                Featuring role permissions and secure logins. See below for a detailed description of roles and permissions.
+                            </h4>
+                                
+                          
+                            </div>
                     
-                        @*<h3 class="text-uppercase">Welcome</h3>*@
-                        <p class="text-muted m-t-30 m-b-30">SPRINGER IS A SOFTWARE &amp; HARDWARE TICKET TRACKING APP</p>
-                        <div>Created using Visual Studio, MVC Design Pattern, C#, HTML5, CSS, JQuery, &amp; Bootstrap.</div>
+                        <div class="card-body" align="center">
+                          
+                            
 
-                  
+                            <div class="row" style="background-color:white">
+                                <div class="col-xs-6 col-md-3">
+                                    <h3 class="card-title">USER</h3>
+                                    <ul class="list-unstyled">
+                                        <li class="media">
+                                            <img class="d-flex mr-3" src="../Assets/images/userAv.png" width="60" alt="Generic placeholder image">
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-1">Permissions</h5>Submit a ticket<br />
+                                                Be assigned to projects
+                                            </div>
+                                        </li>
+                                   
+                                    </ul>
+                                   
+                                </div>
+                                <div class="col-xs-6 col-md-3">
+                                    <h3 class="card-title">DEVELOPER</h3>
+                                   
+                                    <ul class="list-unstyled">
+                                        <li class="media">
+                                            
+                                            <img class="d-flex mr-3" src="../Assets/images/developrAv.png" width="60" alt="Generic placeholder image">
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-1">Permissions</h5>
+                                        Receive ticket assignments<br />
+                                        Receive ticket update emails
+                                        </div>
+                                        </li>
+
+                                    </ul>
+                                       
+</div>
+                                <div class="col-xs-6 col-md-3">
+                                    <h3>PROJECT MANAGER</h3>
+                                    <ul class="list-unstyled">
+                                        <li class="media">
+                                            <img class="d-flex mr-3" src="../Assets/images/AdminAv.png" width="60" alt="Generic placeholder image">
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-1">Permissions</h5>
+                                        Assign users to projects<br />
+                                        View all project details
+                                        </div>
+                                        
+
+
+                                    </ul>
+                                        
+</div>
+                                <div class="col-xs-6 col-md-3">
+                                    <h3>ADMINISTRATOR</h3>
+                                    <ul class="list-unstyled">
+                                        <li class="media">
+                                            <img class="d-flex mr-3" src="../Assets/images/pmAv.png" width="60" alt="Generic placeholder image">
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-1">Permissions</h5>   Assign roles to users<br />
+                                        View all project details<br />
+                                        View all ticket details
+                                            </div>
+                                        </li>
+                                     
+                                    </ul>
+                                  
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                     
                 </div>
+            </div>
+
+       
+        
+                    
+                    
+                
               
                 <footer class="footer text-center">© @DateTime.Now.Year Jessica Dean</footer>
-            </div>
-        </section>
+           
+      
         <!-- ============================================================== -->
         <!-- End Wrapper -->
         <!-- ============================================================== -->

@@ -1,28 +1,28 @@
 ﻿@model IEnumerable<jdean_bugtracker.Models.codeFirst.Project>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Projects";
 }
 
-<h2>My Projects</h2>
-
-<p>
+@*<p>
     @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
     {
         <div>
-            @Html.ActionLink("Project Admin View", "ProjectAdmin") |
-            @Html.ActionLink("Create New", "Create")
+
+
+            <a href=" @Url.Action()" class="btn btn-warning">Create New Project</a>
+
         </div>
     }
 
-</p>
+</p>*@
 <div class="row">
     <div class="col-12">
 
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Projects Index</h4>
-                <h6 class="card-subtitle">Viewing My Projects</h6>
+                <h4 class="card-title">My Assigned Projects</h4>
+                <h6 class="card-subtitle">View Details</h6>
                 <div class="table-responsive m-t-40">
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
@@ -37,14 +37,14 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Title)
                                 </th>
-                                
+
                                 <th>
                                     Created By
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Users)
                                 </th>
-                                <th>Actions</th>
+                                @*<th>Actions</th>*@
                             </tr>
                         </thead>
                         <tbody>
@@ -52,44 +52,46 @@
                             {
                                 <tr>
                                     <td>
-    @Html.DisplayFor(modelItem => item.Id)
-</td>
+                                        # @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Created.LocalDateTime)
                                     </td>
-                                    
+
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Title)
+                                        @Html.DisplayFor(modelItem => item.Title) <br />
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                                        
                                     </td>
-                                    
+
                                     <td>
                                         @Html.DisplayFor(modelItem => item.AuthorId)
                                     </td>
                                     <td>
-                                      
-                                                                                @foreach (var user in item.Users)
-                                                                                {
-                                                                                    <small> @user.FullName </small><br />
+
+                                        @foreach (var user in item.Users)
+                                        {
+                                            <small> @user.FullName </small><br />
                                         }
                                     </td>
 
-                                    <td>
-                                       
-                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-
-                                        @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
-                {
-                                            <div>
-                                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-
-                                                @Html.ActionLink("Archive", "Delete", new { id = item.Id }) |
-
-                                                @Html.ActionLink("Assign to Project", "ProjectUser", new { id = item.Id })
-                                            </div>
-                                        }
+                                    @*<td>
 
 
-                                    </td>
+
+                            @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
+    {
+                                <div>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+
+                                    @Html.ActionLink("Archive", "Delete", new { id = item.Id }) <br />
+
+                                    @Html.ActionLink("Assign Developer", "ProjectUser", new { id = item.Id })
+                                </div>
+                            }
+
+
+                                    </td>*@
                                 </tr>
                             }
                         </tbody>
@@ -97,56 +99,56 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
-        @section scripts {
-            <!-- This is data table -->
-            <script src="~/Assets/plugins/datatables/jquery.dataTables.min.js"></script>
-            <script>
-                $(document).ready(function () {
-                    $('#myTable').DataTable();
-                    $(document).ready(function () {
-                        var table = $('#example').DataTable({
-                            "columnDefs": [{
-                                "visible": false,
-                                "targets": 2
-                            }],
-                            "order": [
-                                [2, 'asc']
-                            ],
-                            "displayLength": 25,
-                            "drawCallback": function (settings) {
-                                var api = this.api();
-                                var rows = api.rows({
-                                    page: 'current'
-                                }).nodes();
-                                var last = null;
-                                api.column(2, {
-                                    page: 'current'
-                                }).data().each(function (group, i) {
-                                    if (last !== group) {
-                                        $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
-                                        last = group;
-                                    }
-                                });
+</div>
+@section scripts {
+    <!-- This is data table -->
+    <script src="~/Assets/datatables/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+            $(document).ready(function () {
+                var table = $('#example').DataTable({
+                    "columnDefs": [{
+                        "visible": false,
+                        "targets": 2
+                    }],
+                    "order": [
+                        [2, 'asc']
+                    ],
+                    "displayLength": 25,
+                    "drawCallback": function (settings) {
+                        var api = this.api();
+                        var rows = api.rows({
+                            page: 'current'
+                        }).nodes();
+                        var last = null;
+                        api.column(2, {
+                            page: 'current'
+                        }).data().each(function (group, i) {
+                            if (last !== group) {
+                                $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                                last = group;
                             }
                         });
-                        // Order by the grouping
-                        $('#example tbody').on('click', 'tr.group', function () {
-                            var currentOrder = table.order()[0];
-                            if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-                                table.order([2, 'desc']).draw();
-                            } else {
-                                table.order([2, 'asc']).draw();
-                            }
-                        });
-                    });
+                    }
                 });
-                $('#example23').DataTable({
-                    dom: 'Bfrtip',
-                    buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print'
-                    ]
+                // Order by the grouping
+                $('#example tbody').on('click', 'tr.group', function () {
+                    var currentOrder = table.order()[0];
+                    if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                        table.order([2, 'desc']).draw();
+                    } else {
+                        table.order([2, 'asc']).draw();
+                    }
                 });
-            </script>
-        }
+            });
+        });
+        $('#example23').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    </script>
+}

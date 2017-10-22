@@ -19,6 +19,7 @@ namespace jdean_bugtracker.Models.codeFirst
         public string Title { get; set; }
         public string Description { get; set; }
         public string AuthorId { get; set; }
+        public bool Archived { get; set; }
 
         public virtual ICollection<ApplicationUser> Users { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }

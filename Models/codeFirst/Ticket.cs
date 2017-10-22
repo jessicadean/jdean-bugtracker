@@ -25,6 +25,7 @@ namespace jdean_bugtracker.Models.codeFirst
         public int TicketStatusId { get; set; }
         public string OwnerUserId { get; set; }
         public string AssignToUserId { get; set; }
+        public bool Archived { get; set; }
 
         public virtual Project Project { get; set; }
         public virtual TicketType TicketType { get; set; }

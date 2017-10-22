@@ -4,10 +4,18 @@
     ViewBag.Title = "ProjectAdmin";
 }
 
-<h2>Viewing All Projects</h2>
+
 
 <p>
-    @Html.ActionLink("Back to My Projects", "Index") | @Html.ActionLink("Create New", "Create")
+    @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
+    {
+        <div>
+
+
+            <a href=" @Url.Action()" class="btn btn-warning">Create New Project</a>
+
+        </div>
+    }
 
 </p>
 <div class="row">
@@ -28,16 +36,17 @@
                                     Created
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Title)
+                                   Title
                                 </th>
                                 
                                 <th>
                                     Created By
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Users)
+                                  Assignees
                                 </th>
                                 <th>Actions</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -48,10 +57,11 @@
                                        # @Html.DisplayFor(modelItem => item.Id)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Created)
+                                        @Html.DisplayFor(modelItem => item.Created.LocalDateTime)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Title)
+                                        @Html.DisplayFor(modelItem => item.Title) <br />
+@Html.ActionLink("Details", "Details", new { id = item.Id }) 
                                     </td>
                                    
                                     <td>
@@ -64,30 +74,31 @@
                                         }
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                        @Html.ActionLink("Archive", "Delete", new { id = item.Id }) |
-                                        @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
-                {
-                                            <div>  @Html.ActionLink("Assign to Project", "ProjectUser", new { id = item.Id })</div>
-                                        }
+                                        
+                                        
+                                        <div class="btn-group-sm">
+                                            <a href="@Url.Action("Edit", "Projects", new { id = item.Id})" class="btn btn-sm btn-inverse"><i class="fa fa-edit" aria-label="edit"></i> Edit</a>
+                                        
+                                           <a href=" @Url.Action("ProjectUser", "Projects", new { id = item.Id })"  class="btn btn-sm btn-inverse"><i class="fa fa-user-plus"></i> Assign</a>
+                                        </div>
 
 
-                                    </td>
+                                            </td>
                                 </tr>
                             }
 
 
-                        </tbody>
-                    </table>
-                </div>
+                            </tbody>
+                            </table>
+                        </div>
             </div>
         </div>
     </div>
 </div>
 @section scripts {
+
     <!-- This is data table -->
-    <script src="~/Assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/datatables/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#myTable').DataTable();

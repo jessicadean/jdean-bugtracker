@@ -18,7 +18,7 @@ namespace jdean_bugtracker.Controllers
 {
     [Authorize]
     public class TicketsController : Universal
-    {        
+    {
         // GET: Tickets
         public ActionResult Index()
         {
@@ -26,7 +26,7 @@ namespace jdean_bugtracker.Controllers
             var tickets = db.Tickets.Include(t => t.AssignToUser).Include(t => t.OwnerUser).Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
             if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
             {
-               
+
                 return View(user.Projects.SelectMany(t => t.Tickets).ToList());
             }
             else if (User.IsInRole("Developer"))
@@ -43,7 +43,7 @@ namespace jdean_bugtracker.Controllers
         }
 
         // GET: TicketsAdmin
-        [Authorize (Roles=("Admin"))]
+        [Authorize(Roles = ("Admin"))]
         public ActionResult TicketsAdmin()
         {
             var tickets = db.Tickets.Include(t => t.AssignToUser).Include(t => t.OwnerUser).Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
@@ -74,10 +74,10 @@ namespace jdean_bugtracker.Controllers
             }
             else if (User.IsInRole("ProjectManager"))
             {
-               if (helper.IsUserOnProject(user.Id, project.Id) == true) //defaults to true, == true not necessary
-                    {
-                
-                return View(ticket);
+                if (helper.IsUserOnProject(user.Id, project.Id) == true) //defaults to true, == true not necessary
+                {
+
+                    return View(ticket);
                 }
             }
             else if (User.IsInRole("Developer") && ticket.AssignToUserId == user.Id)
@@ -92,7 +92,7 @@ namespace jdean_bugtracker.Controllers
             {
                 return RedirectToAction("Index", "Projects");
             }
-            return RedirectToAction("Index","Tickets", null);
+            return RedirectToAction("Index", "Tickets", null);
         }
 
         // GET: Tickets/Create
@@ -106,9 +106,9 @@ namespace jdean_bugtracker.Controllers
 
             ViewBag.ProjectId = new SelectList(helper.ListUserProjects(user.Id), "Id", "Title");
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name");
-           
+
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name");
-           
+
             return View();
         }
 
@@ -130,7 +130,7 @@ namespace jdean_bugtracker.Controllers
                 return RedirectToAction("Index");
             }
 
-            
+
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Title", ticket.ProjectId);
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
@@ -141,7 +141,7 @@ namespace jdean_bugtracker.Controllers
         public ActionResult Edit(int? id)
         {
             Ticket ticket = db.Tickets.Find(id);
-            
+
 
             if (id == null)
             {
@@ -155,7 +155,7 @@ namespace jdean_bugtracker.Controllers
             {
                 ViewBag.TicketStatusId = new SelectList(new[] { ticket.TicketStatus }, "Id", "Name", ticket.TicketStatusId);
             }
-            
+
             var user = db.Users.Find(User.Identity.GetUserId());
             ProjectAssignHelper helper = new ProjectAssignHelper();
             UserRoleHelper userhelper = new UserRoleHelper();
@@ -171,7 +171,7 @@ namespace jdean_bugtracker.Controllers
                 {
                     devlist.Add(dev);
                 }
-                
+
             }
             ViewBag.AssignToUserId = new SelectList(devlist, "Id", "FirstName", ticket.AssignToUserId);
             ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
@@ -206,8 +206,8 @@ namespace jdean_bugtracker.Controllers
             }
             return RedirectToAction("Index", "Tickets", null);
         }
-           
-        
+
+
 
         // POST: Tickets/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -222,16 +222,20 @@ namespace jdean_bugtracker.Controllers
                 TicketHistoryHelper tickethelper = new TicketHistoryHelper();
                 ticket.Updated = DateTimeOffset.UtcNow;
                 db.Entry(ticket).State = EntityState.Modified;
-
-
                 TicketHistory tickethistory = new TicketHistory();
                 NotificationHelper notifyHelper = new NotificationHelper();
                 var oldTicket = db.Tickets.AsNoTracking().First(t => t.Id == ticket.Id);
-                if (oldTicket.AssignToUserId != ticket.AssignToUserId)
+                if (oldTicket.AssignToUserId != null)
+
                 {
-                    tickethelper.TktAssignUserHistory(ticket, user.Id);
-                    notifyHelper.Notify(ticket.AssignToUserId, "BugTracker App Notification", "Your ticket needs attention. "
-                            + ticket.Title, true);
+
+
+                    if (oldTicket.AssignToUserId != ticket.AssignToUserId)
+                    {
+                        tickethelper.TktAssignUserHistory(ticket, user.Id);
+                        notifyHelper.Notify(ticket.AssignToUserId, "BugTracker App Notification", "Your ticket needs attention. "
+                                + ticket.Title, true);
+                    }
                 }
                 if (oldTicket.Title != ticket.Title)
                 {
@@ -273,7 +277,7 @@ namespace jdean_bugtracker.Controllers
                 ViewBag.TicketStatusId = new SelectList(db.TicketStatus, "Id", "Name", ticket.TicketStatusId);
                 ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
 
-                return View(ticket);
+                return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
             }
             return RedirectToAction("Index");
         }
@@ -328,7 +332,7 @@ namespace jdean_bugtracker.Controllers
             var user = db.Users.Find(User.Identity.GetUserId());
             if (attachFile != null)
             {
-            
+
                 var ext = Path.GetExtension(attachFile.FileName).ToLower();
                 if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".gif" && ext != ".bmp" && ext != ".pdf")
 
@@ -336,18 +340,18 @@ namespace jdean_bugtracker.Controllers
             }
             if (ModelState.IsValid) //makes sure all the properties are bound
             {
-            if (attachFile != null)
+                if (attachFile != null)
 
                 {
                     ticketattachment.Created = DateTimeOffset.Now;
                     ticketattachment.AuthorId = user.Id;
                     var filePath = "/Assets/UserUploads/";
-                var absPath = Server.MapPath("~" + filePath);
-                ticketattachment.FileUrl = filePath + attachFile.FileName;
-                attachFile.SaveAs(Path.Combine(absPath, attachFile.FileName));
-               
-                db.TicketAttachments.Add(ticketattachment);
-                
+                    var absPath = Server.MapPath("~" + filePath);
+                    ticketattachment.FileUrl = filePath + attachFile.FileName;
+                    attachFile.SaveAs(Path.Combine(absPath, attachFile.FileName));
+
+                    db.TicketAttachments.Add(ticketattachment);
+
                 }
                 db.SaveChanges();
             }
@@ -361,9 +365,9 @@ namespace jdean_bugtracker.Controllers
             {
                 return RedirectToAction("Details", "Tickets", new { id = ticketattachment.TicketId });
             }
-            
-            
-           
+
+
+
         }
 
         public ActionResult AttachNotify(int? id)
@@ -402,7 +406,7 @@ namespace jdean_bugtracker.Controllers
         public ActionResult CreateComment([Bind(Include = "Id,TicketId,Body")]TicketComment ticketComment)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
-           
+
             if (ModelState.IsValid)
             {
 
@@ -452,13 +456,13 @@ namespace jdean_bugtracker.Controllers
                 {
                     return HttpNotFound();
                 }
-                
+
 
             }
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", ticketcomment.AuthorId);
             ViewBag.BlogPostId = new SelectList(db.TicketComments, "Id", "Title", ticketcomment.TicketId);
             return View(ticketcomment);
-          
+
         }
 
 
@@ -483,15 +487,15 @@ namespace jdean_bugtracker.Controllers
                     ticketcomment.Updated = DateTimeOffset.UtcNow;
                     db.Entry(ticketcomment).State = EntityState.Modified;
                     db.SaveChanges();
-                    
+
                     return RedirectToAction("Details", "Tickets", new { id = ticketcomment.TicketId });
 
                 }
                 //ViewBag.AuthorId = new SelectList("Id", "FirstName", ticketcomment.AuthorId);
                 //ViewBag.CommentId = new SelectList(db.TicketComments, "Id", "Title", ticketcomment.Id);
-return View("Details");
+                return View("Details");
                 //return RedirectToAction("Details", "Tickets", new { id = ticketcomment.TicketId });
-                
+
             }
             else
             {
@@ -547,9 +551,9 @@ return View("Details");
             }
         }
 
-       
 
-    protected override void Dispose(bool disposing)
+
+        protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
@@ -559,6 +563,6 @@ return View("Details");
         }
     }
 
-    
+
 
 }
