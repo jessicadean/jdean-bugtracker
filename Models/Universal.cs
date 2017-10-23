@@ -24,6 +24,7 @@ namespace jdean_bugtracker.Models
                 ViewBag.LastName = user.LastName;
                 ViewBag.FullName = user.FullName;
                 ViewBag.ProfilePic = user.ProfilePic;
+                
 
                 base.OnActionExecuting(filterContext);
 

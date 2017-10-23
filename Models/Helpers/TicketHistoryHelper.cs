@@ -91,7 +91,7 @@ namespace jdean_bugtracker.Models.Helpers
             TicketHistory tickethistory = new TicketHistory();
             Ticket oldTicket = db.Tickets.AsNoTracking().First(t => t.Id == ticket.Id);
             tickethistory.TicketId = ticket.Id;
-            tickethistory.OldValue = oldTicket.TicketPriorityId.ToString();
+            tickethistory.OldValue = oldTicket.TicketPriority.Name;
             tickethistory.NewValue = db.TicketPriorities.Find(ticket.TicketPriorityId).Name;
             tickethistory.Property = "Ticket Priority";
             tickethistory.Created = DateTimeOffset.UtcNow;

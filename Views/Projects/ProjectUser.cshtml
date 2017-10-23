@@ -1,6 +1,6 @@
 ﻿@model jdean_bugtracker.Models.Helpers.ProjectUserViewModel
 @{
-    ViewBag.Title = "ProjectUser";
+    ViewBag.Title = "Assign Users";
 }
 
 <h2>Assign Users to Project</h2>
@@ -12,7 +12,8 @@
 <h3>Project Name : @Model.AssignProject.Title</h3>
 
 @Html.ListBox("SelectedUsers", Model.Users, new { @class = "multi-select", style = "" })
-<button type="submit">Submit </button>
+    <br/>
+<button type="submit" class="btn btn-success">Submit </button>
 }
 
 @section Scripts{
@@ -25,7 +26,7 @@
                 selectableHeader: "<div style='text-align: center; background-color: black; color: white'><strong>Available Users </strong></div>",
                 selectionHeader: "<div style= 'text-align: center; background-color: black; color: white'><strong>Users on Project</strong></div>"
             });
-            $(".ms-container").append('<i class="glyph-icon icon-exchange"></i>');
+            $(".ms-container").append('<i class="mdi mdi-repeat"></i>');
 
         });
 

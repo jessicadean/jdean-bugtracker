@@ -11,8 +11,8 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Support Ticket List</h4>
-                <h6 class="card-subtitle">List of ticket opend by customers</h6>
+                <h4 class="card-title">Issue Ticket List</h4>
+                <h6 class="card-subtitle">Viewing tickets for my projects</h6>
                 <div class="row m-t-40">
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3 col-xlg-3">
@@ -62,7 +62,7 @@
                                 <h6 class="card-subtitle">Data table example</h6>*@
                                 @if (User.IsInRole("Submitter")) 
                                     { 
-                                <a href="@Url.Action("Create", "Tickets")" class="btn btn-info btn-rounded">Add Ticket</a>
+                                <a href="@Url.Action("Create", "Tickets")" class="btn btn-info btn-rounded">Add New Ticket</a>
                                 }
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">

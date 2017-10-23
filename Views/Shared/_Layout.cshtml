@@ -325,7 +325,7 @@
                     </div>
                     <!-- User profile text-->
                     <div class="profile-text">
-                        <h5>@User.Identity.Name</h5>
+                        <h5>@ViewBag.FullName</h5>
                         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                         {
                         @Html.AntiForgeryToken()
@@ -364,7 +364,7 @@
                     </ul>*@
                         </li>
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="@Url.Action("Index","Projects")" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Projects</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="@Url.Action("Index","Projects")" aria-expanded="false"><i class="mdi mdi-pin"></i><span class="hide-menu">Projects</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li>@Html.ActionLink("My Projects", "Index", "Projects")</li>
                                 @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager"))
@@ -374,7 +374,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-email"></i><span class="hide-menu">Tickets</span></a>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-paperclip"></i><span class="hide-menu">Tickets</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li>@Html.ActionLink("My Tickets", "Index", "Tickets")</li>
                                 @if (User.IsInRole("Admin"))
@@ -387,7 +387,7 @@
                         @if (User.IsInRole("Admin"))
                         {
                     <li>
-                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Admin </span></a>
+                        <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-clipboard-account"></i><span class="hide-menu">Admin </span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li>@Html.ActionLink("User Manager", "Index", "Admin")</li>
                         </ul>
