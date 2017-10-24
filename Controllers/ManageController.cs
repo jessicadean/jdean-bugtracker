@@ -265,7 +265,7 @@ namespace jdean_bugtracker.Controllers
                     image.SaveAs(Path.Combine(Server.MapPath("~/Assets/ProfilePics/"), fileName + Path.GetExtension(image.FileName)));
                 }
 
-                var defaultProfilePic = "/Assets/images/profile.png";
+                var defaultProfilePic = "/Assets/images/avatar.png";
                 if (String.IsNullOrWhiteSpace(pPic))
                 {
                     pPic = defaultProfilePic;

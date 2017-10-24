@@ -2467,6 +2467,17 @@
     <Content Include="Assets\prism\prism-old.css" />
     <Content Include="Assets\prism\prism.css" />
     <Content Include="Assets\prism\prism.js" />
+    <Content Include="Assets\ProfilePics\2.jpg" />
+    <Content Include="Assets\ProfilePics\6.jpg" />
+    <Content Include="Assets\ProfilePics\8.jpg" />
+    <Content Include="Assets\ProfilePics\headshot300%281%29.png" />
+    <Content Include="Assets\ProfilePics\headshot300%283%29.png" />
+    <Content Include="Assets\ProfilePics\headshot300.png" />
+    <Content Include="Assets\ProfilePics\jcds-headshot.jpg" />
+    <Content Include="Assets\ProfilePics\profile%281%29.png" />
+    <Content Include="Assets\ProfilePics\profile.png" />
+    <Content Include="Assets\ProfilePics\sflower%281%29.jpg" />
+    <Content Include="Assets\ProfilePics\sflower.jpg" />
     <Content Include="Assets\raphael\dev\amdDev.js" />
     <Content Include="Assets\raphael\dev\index.js" />
     <Content Include="Assets\raphael\dev\require.js" />
@@ -3218,6 +3229,17 @@
     <Content Include="Assets\typeahead.js-master\test\typeahead\typeahead_spec.js" />
     <Content Include="Assets\typed.js-master\dist\typed.min.js" />
     <Content Include="Assets\typed.js-master\js\typed.js" />
+    <Content Include="Assets\UserUploads\500x500.png" />
+    <Content Include="Assets\UserUploads\aurore.jpg" />
+    <Content Include="Assets\UserUploads\danube.jpg" />
+    <Content Include="Assets\UserUploads\eglise.jpg" />
+    <Content Include="Assets\UserUploads\lac.jpg" />
+    <Content Include="Assets\UserUploads\riviere.jpg" />
+    <Content Include="Assets\UserUploads\sflower.jpg" />
+    <Content Include="Assets\UserUploads\skye.jpg" />
+    <Content Include="Assets\UserUploads\succulent.jpg" />
+    <Content Include="Assets\UserUploads\val.jpg" />
+    <Content Include="Assets\UserUploads\voralberg.jpg" />
     <Content Include="Assets\vectormap\gdp-data.js" />
     <Content Include="Assets\vectormap\jquery-jvectormap-2.0.2.css" />
     <Content Include="Assets\vectormap\jquery-jvectormap-2.0.2.min.js" />
@@ -4225,8 +4247,6 @@
     <Folder Include="Assets\etc\" />
     <Folder Include="Assets\footable\old\" />
     <Folder Include="Assets\images\users\" />
-    <Folder Include="Assets\ProfilePics\" />
-    <Folder Include="Assets\UserUploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

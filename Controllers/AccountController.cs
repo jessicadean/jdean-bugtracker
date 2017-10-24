@@ -170,7 +170,7 @@ namespace jdean_bugtracker.Controllers
                     var num = 0;
                     //Gets Filename without the extension
                     var fileName = Path.GetFileNameWithoutExtension(image.FileName);
-                    pPic = Path.Combine("/Assets/ProfilePics/", fileName + Path.GetExtension(image.FileName));
+                    pPic = Path.Combine("~/Assets/ProfilePics/", fileName + Path.GetExtension(image.FileName));
                     //Checks if pPic matches any of the current attachments, 
                     //if so it will loop and add a (number) to the end of the filename
                     while (db.Users.Any(u => u.ProfilePic == pPic))

@@ -17,11 +17,14 @@ namespace jdean_bugtracker.Models.Helpers
             Ticket oldTicket = db.Tickets.AsNoTracking().First(t => t.Id == ticket.Id);
             tickethistory.TicketId = ticket.Id;
             tickethistory.OldValue = oldTicket.AssignToUser.FullName;
+            if (ticket.AssignToUserId != null)
+            { 
             tickethistory.NewValue = db.Users.Find(ticket.AssignToUserId).FullName;
             tickethistory.Property = "Assign to User";
             tickethistory.Created = DateTimeOffset.UtcNow;
             tickethistory.AuthorId = userId;
             db.TicketHistories.Add(tickethistory);
+            }
               db.SaveChanges();
         }
 
